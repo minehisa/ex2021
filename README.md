@@ -37,9 +37,9 @@ git clone https://github.com/minehisa/ex2021.git
     *この時点ではまだリポジトリに追加されていない.
     
     現在の状況を確認したい場合は，`git status` で表示される
-    + く追加したファイル：Untracked files  
-    + インデックスに追加されていない、変更したファイル：Changes not staged for commit  
-    + コミットする予定の変更したファイル：Changes to be committed  
+    + Untracked files \：追加したファイル  
+    + Changes not staged for commit \：インデックスに追加されていない、変更したファイル  
+    + Changes to be committed コミットする予定の変更したファイル  
     にて確認できる．
     
 
