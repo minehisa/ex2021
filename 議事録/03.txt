@@ -1,0 +1,20 @@
+第3回議事録
+2021/05/31
+14:30~
+Zoom
+
+議題
+1.UIを決定（全員がイメージを事前用意）
+
+googleスライドにて作成
+URL：
+https://docs.google.com/presentation/d/19HZxNKzDVEGnbfJj92S5r9yB-XB0Za1hD-hyqt9F_Zk/edit#slide=id.p
+
+予備
+/UI/20210531_UI.pptx
+
+2.次回ミーティング予定
+2021/06/07(月) 14：30~ zoomにて
+やること
+・提案準備
+・開発計画（重要度付け，手順）等
