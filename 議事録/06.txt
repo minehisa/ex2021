@@ -13,9 +13,13 @@ URL:https://docs.google.com/spreadsheets/d/14bWde71ev4S3TdWv738A4eCp5r1uiIQUDeop
 スライド資料(ファイル名記述あり)
 /スライド資料/2021年6月21日計画案.pptx
 
+プログラム環境の決定
+Visual Studio Code
+
 
 次回ミーティング予定
 2021/06/21(月) 14:30~ zoomにて
 やること
 ・githubにのせてある各自が作成したUIのスタイルの統一をしておく
 ・システム開発で使用するサーバーを聞いておく
+・画面の遷移とか細かい機能を作成
