@@ -1,0 +1,33 @@
+<ファイル名>
+
+1. TOPページ
+  TOP.html
+  TOP.css
+
+2. ログイン画面
+login.hml
+login.css
+
+3. メイン画面
+main.hml
+main.css
+
+4. パスワード忘れ1
+password_meaage.hml
+password_meaage.css
+
+5. パスワード忘れ2
+password_register.hml
+password_ register.css
+
+6. 新規登録画面
+new_register.hml
+new_register.css
+
+7. 論文詳細画面
+paper_detail. hml
+paper_detail.css
+
+8. 論文追加画面
+paper_add. hml
+paper_add.css
