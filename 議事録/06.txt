@@ -10,6 +10,7 @@ Zoom
 スケジュールはgoogleのガントチャートにて作成
 URL:https://docs.google.com/spreadsheets/d/14bWde71ev4S3TdWv738A4eCp5r1uiIQUDeopojJpdFQ/edit?usp=sharing
 
+
 スライド資料(ファイル名記述あり)
 /スライド資料/2021年6月21日計画案.pptx
 
