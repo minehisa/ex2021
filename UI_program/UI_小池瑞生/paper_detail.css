@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+/* 各パラメータは後日決定 */
+
+/* 各エリアについて */
+.header{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+
+}
+.detail{
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    top: 50px;
+    z-index: 2;
+}
+.show_pdf{
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    bottom: 0%;
+}
+
+/* 各ボタン要素の設定 */
+.btn_edit{
+    display: inline-block;
+    color: white;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    left: 25px;
+    top: 5px;
+
+}
+.btn_bibtex{
+    display: inline-block;
+    color: white;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    left: 100px;
+    top: 5px;
+}
+.btn_back{
+    display: inline-block;
+    color: black;
+    background-color: orange;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    right: 180px;
+    top: 5px;
+}
+.btn_logout{
+    display: inline-block;
+    color: black;
+    position: absolute;
+    right: 70px;
+    top: 15px;
+}
+.icon_user{
+    display: inline-block;
+	width: 40px;
+	height: 40px;
+    position: absolute;
+    right: 25px;
+    top: 5px;
+	background: pink;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	-o-border-radius: 40px;
+	-ms-border-radius: 40px; 
+	border-radius: 40px;
+    border-color: black;
+}
+.paper_name{
+    text-align: center;
+    font-size: large;
+}
+
+/* 詳細表示 */
+.detail-check{
+    display: none;
+}
+.detail-label{
+    text-align: center;
+    margin: 0 auto;
+    background: green;
+    color: white;
+    display: block;
+    margin-bottom: 1px;
+    padding: 5px;
+    position: relative;
+    width: 80%;
+}
+.detail-label:after{
+    background: darkgreen;
+    box-sizing: border-box;
+    content: "+";
+    display: block;
+    font-family: "arial black";
+    height: auto;
+    padding: 5px 20px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+}
+.detail-content{
+    text-align: center;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid black;
+    display: block;
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    transition: .5s;
+    visibility: hidden;
+    width: 80%;
+}
+.detail-check:checked + .detail{
+    height: 170px;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+}
+.detail-check:checked + .detail-label:after{
+    content: "−";
+}
+.detail-check:checked + .detail-label + .detail-content{
+    text-align: center;
+    margin: 0 auto;
+    height: auto;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+    width: 80%;
+}
+/* 詳細の表の設定 */
+table{
+    width: 80%;
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:  collapse;
+}
+th{
+    width: 300px;
+    height: 80px;
+}
+td{
+    text-align: center;
+}
+
+/* PDF表示部の設定 */
+iframe[src$=".pdf"]{
+    display: block;
+    width: 80%;
+    height: 90vh;
+    bottom: 0%;
+    margin-left: auto;
+    margin-right: auto;
+}

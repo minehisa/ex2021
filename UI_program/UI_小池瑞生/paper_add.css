@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/* 各パラメータは後日決定 */
+
+/* 各エリアの設定 */
+.header{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+}
+.add_form{
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+    height: 80%;
+    top: 50px;
+    z-index: 2;
+}
+
+/* ヘッダーのボタン設定 */
+.btn_back{
+    display: inline-block;
+    color: black;
+    background-color: orange;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    right: 180px;
+    top: 5px;
+}
+.btn_logout{
+    display: inline-block;
+    color: black;
+    position: absolute;
+    right: 70px;
+    top: 15px;
+}
+.icon_user{
+    display: inline-block;
+	width: 40px;
+	height: 40px;
+    position: absolute;
+    right: 25px;
+    top: 5px;
+	background: pink;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	-o-border-radius: 40px;
+	-ms-border-radius: 40px; 
+	border-radius: 40px;
+    border-color: black;
+}
+
+.page_title{
+    font-size: 2.0em;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+    border: solid 3px #000;
+}
+
+/* 入力フォームに関する設定 */
+p {
+    display: block;
+}
+.btn_add{
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: relative;
+    top: 5px;
+}
+
+/* ドラッグ＆ドロップのエリアの設定 */
+.dragdrop{
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    max-height: 400px;
+}
