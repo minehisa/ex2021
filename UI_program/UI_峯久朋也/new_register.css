@@ -1,0 +1,40 @@
+.heading {
+    position: relative;
+    
+  }
+  
+  .heading h2{
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 500px;
+    border: 1px solid #000;
+  }
+  
+  .heading p{
+    position: absolute;
+    top: 30px;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  
+  }
+  
+  .center{
+    position: relative;
+    top: 150px;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .inline{
+    display: inline;
+  }
