@@ -1,14 +1,12 @@
-h1 {
-    font-size: 2.0em;
+/* ヘッダーのボタン設定 */
+/* タイトル設定 */
+.page-title{
     text-align: center;
+    font-size: 2.0em;
+    margin: 0 auto;
+    margin-top: 10px;
     max-width: 500px;
     border: solid 3px #000;
-}
-
-.h1_set {
-    width: 700px;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 div.left {
@@ -39,6 +37,7 @@ p.mb10 {
     height: 40px;
     text-align: center;
     background-color: #9ec34b;
+    border-radius: 5px;
     font-size: 16px;
     line-height: 52px;
     color: #FFF;
