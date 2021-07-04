@@ -1,0 +1,7 @@
+//テーブルusertbの定義
+CREATE TABLE usertb(
+    id serial,
+    address varchar(50),
+    password varchar(520),
+    primary key (id)
+);
