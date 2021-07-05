@@ -1,0 +1,145 @@
+.header{
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  padding-top: 30px;
+  position: fixed;
+}
+
+/* ヘッダーのボタン設定 */
+/* タイトル設定 */
+.page-title{
+  text-align: center;
+  font-size: 2.0em;
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 500px;
+  border: solid 3px #000;
+}
+/* ログアウトボタン設定 */
+.btn-logout{
+  display: inline-block;
+  color: #0000ee;
+  position: absolute;
+  right: 70px;
+  top: 15px;
+}
+.btn-logout:hover{
+  color: #87cefa;
+}
+/* ユーザーアイコン設定 */
+.icon-user{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 25px;
+  top: 5px;
+  background: pink;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -o-border-radius: 40px;
+  -ms-border-radius: 40px; 
+  border-radius: 40px;
+  border-color: black;
+}
+
+.container {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* 登録ボタン設定 */
+.btn-register {
+  display: inline-block;
+  width: 180px;
+  height:40px;
+  text-align: center;
+  background-color: #ff6347;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 52px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #ff6347;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-register:after{
+  width: 100%;
+  height: 0;
+  content:"";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background : #FFF;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transition: .2s;
+  z-index: -1;
+}
+.btn-register:hover{
+  color: #ff6347;
+}
+.btn-register:hover:after{
+  height: 240%;
+  opacity: 1;
+}
+.btn-register:active:after{
+  height: 340%;
+  opacity: 1;
+}
+
+/* 削除ボタン設定 */
+.btn-delete {
+  display: inline-block;
+  width: 180px;
+  height:40px;
+  text-align: center;
+  background-color: #1e90ff;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 52px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #1e90ff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-delete:after{
+  width: 100%;
+  height: 0;
+  content:"";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background : #FFF;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transition: .2s;
+  z-index: -1;
+}
+.btn-delete:hover{
+  color: #1e90ff;
+}
+.btn-delete:hover:after{
+  height: 240%;
+  opacity: 1;
+}
+.btn-delete:active:after{
+  height: 340%;
+  opacity: 1;
+}
+
+
+table{
+  width:700px;
+  margin-right: auto;
+  margin-left : auto;
+}

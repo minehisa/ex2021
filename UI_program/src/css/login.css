@@ -1,0 +1,144 @@
+.header{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    padding-top: 30px;
+    position: fixed;
+}
+/* ヘッダーのボタン設定 */
+/* タイトル設定 */
+.page-title{
+    text-align: center;
+    font-size: 2.0em;
+    margin: 0 auto;
+    margin-top: 10px;
+    max-width: 500px;
+    border: solid 3px #000;
+}
+/* 戻るボタン設定 */
+.btn-back {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ffa500;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #ffa500;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-back:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+.btn-back:hover {
+    color: #ffa500;
+}
+.btn-back:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+.btn-back:active:after {
+    height: 340%;
+    opacity: 1;
+}
+
+div.left {
+    text-align: left;
+}
+
+div.center {
+    text-align: center;
+}
+
+div.right {
+    text-align: right;
+}
+
+p.mb10 {
+    margin-bottom: 10em;
+}
+
+p.mb3 {
+    margin-bottom: 3em;
+}
+
+input {
+    padding: 10px;
+}
+
+p.pad5 {
+    padding-left: 300px;
+}
+
+.container {
+    font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.btn-open {
+    padding: 0px;
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    background-color: #9ec34b;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #9ec34b;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-open:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+
+.btn-open:hover {
+    color: #9ec34b;
+}
+
+.btn-open:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+
+.btn-open:active:after {
+    height: 340%;
+    opacity: 1;
+}

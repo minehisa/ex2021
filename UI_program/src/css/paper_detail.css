@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+/* 各パラメータは後日決定 */
+
+/* 各エリアについて */
+.header{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    padding-top: 30px;
+    position: fixed;
+}
+.detail{
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    top: 50px;
+    z-index: 2;
+}
+.show-pdf{
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    bottom: 0%;
+}
+
+/* ヘッダーのボタン設定 */
+/* 編集＆BIBTEX形式ボタンの設定 */
+.btn-editbib {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #d3d3d3;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-editbib:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+.btn-editbib:hover {
+    color: #000000;
+}
+.btn-editbib:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+.btn-editbib:active:after {
+    height: 340%;
+    opacity: 1;
+}
+
+/* 戻るボタン設定 */
+.btn-back {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ffa500;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #ffa500;
+    position: absolute;
+    right: 180px;
+    top: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-back:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+.btn-back:hover {
+    color: #ffa500;
+}
+.btn-back:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+.btn-back:active:after {
+    height: 340%;
+    opacity: 1;
+}
+
+/* ログアウトボタン設定 */
+.btn-logout{
+    display: inline-block;
+    color: #0000ee;
+    position: absolute;
+    right: 70px;
+    top: 15px;
+}
+.btn-logout:hover{
+    color: #87cefa;
+}
+/* ユーザーアイコン設定 */
+.icon-user{
+    display: inline-block;
+	width: 40px;
+	height: 40px;
+    position: absolute;
+    right: 25px;
+    top: 5px;
+	background: pink;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	-o-border-radius: 40px;
+	-ms-border-radius: 40px; 
+	border-radius: 40px;
+    border-color: black;
+}
+
+/* 論文名の設定 */
+.paper-name{
+    text-align: center;
+    font-size: large;
+}
+
+/* 詳細表示 */
+.detail-check{
+    display: none;
+}
+.detail-label{
+    text-align: center;
+    margin: 0 auto;
+    background: #9ec34b;
+    color: #000000;
+    display: block;
+    margin-bottom: 1px;
+    padding: 5px;
+    position: relative;
+    width: 80%;
+    transition: .2s;
+    cursor: pointer;
+}
+.detail-label:hover{
+    background-color: #008000;
+    color: #ffffff;
+    transition: .2s;
+}
+.detail-label:after{
+    background: #008000;
+    box-sizing: border-box;
+    content: "+";
+    display: block;
+    font-family: "arial black";
+    height: auto;
+    padding: 5px 20px;
+    position: absolute;
+    transition: .2s;
+    right: 0;
+    top: 0px;
+}
+.detail-content{
+    text-align: center;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #000000;
+    display: block;
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    transition: .5s;
+    visibility: hidden;
+    width: 80%;
+}
+.detail-check:checked + .detail{
+    height: 170px;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+}
+.detail-check:checked + .detail-label:after{
+    content: "−";
+    transition: 2s;
+}
+.detail-check:checked + .detail-label + .detail-content{
+    text-align: center;
+    margin: 0 auto;
+    height: auto;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+    width: 80%;
+}
+
+/* 詳細の表の設定 */
+table{
+    width: 80%;
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:  collapse;
+}
+th{
+    width: 300px;
+    height: 80px;
+}
+td{
+    text-align: center;
+}
+
+/* PDF表示部の設定 */
+iframe[src$=".pdf"]{
+    display: block;
+    width: 80%;
+    height: 90vh;
+    bottom: 0%;
+    margin-left: auto;
+    margin-right: auto;
+}

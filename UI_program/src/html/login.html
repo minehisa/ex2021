@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./../css/login.css">
+    <title>ログイン画面</title>
+</head>
+
+<body>
+    <div class="header">
+        <a href="./../Top.html" class="btn-back">戻る</a>
+    </div>
+    <h1 class="page-title">ログイン画面</h1>
+
+    <p class="mb3"></p>
+
+    <div class="center">
+        <p class="pad5">
+            <a href="./password_message.html" target="_blank">パスワードを忘れた方へ</a>
+        </p>
+    </div>
+    <form action="db_login.php" method="post">
+        <div class="center">
+            メールアドレス：
+            <input type="email" id="msg" size="50" name="address">
+            <p class="mb3"></p>
+            パスワード：
+            <input type="password" id="msg" size="50" name="pass">
+        </div>
+
+        <p class="mb10"></p>
+        <form>
+            <div class="center">
+                <input type="submit" value="ログイン" class="btn-open" onclick="location.href='./main.html'; return false;">
+                <!--                    <a href="#" class="btn-open">ログイン</a>    -->
+            </div>
+        </form>
+    </form>
+</body>
+
+</html>
