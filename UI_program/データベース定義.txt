@@ -5,3 +5,24 @@ CREATE TABLE usertb(
     password varchar(520),
     primary key (id)
 );
+
+CREATE TABLE paperbasic(
+    paperid serial,
+    id integer,
+    papername varchar(50),
+    updatetime timestamp,
+    regitime timestamp,
+    primary key (paperid),
+    foreign key (id) references usertb(id)
+);
+
+CREATE TABLE paperdetail(
+    paperid integer,
+    papername varchar(50),
+    author varchar(50),
+    journal varchar(50),
+    yearofpublic varchar(50),
+    paperpdf oid,
+    primary key (paperid),
+    foreign key (paperid) references paperbasic(paperid)
+);
