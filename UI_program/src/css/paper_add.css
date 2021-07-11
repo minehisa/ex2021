@@ -6,18 +6,7 @@
     text-align: center;
     width: 100%;
     height: 50px;
-    padding-top: 30px;
     position: fixed;
-}
-
-.add-form{
-    text-align: center;
-    margin: 0 auto;
-    position: relative;
-    width: auto;
-    height: 80%;
-    top: 50px;
-    z-index: 2;
 }
 
 /* ヘッダーのボタン設定 */
@@ -26,8 +15,9 @@
     text-align: center;
     font-size: 2.0em;
     margin: 0 auto;
-    margin-top: 10px;
-    max-width: 500px;
+    width: 500px;
+    height: 50px;
+    max-width: 800px;
     border: solid 3px #000;
 }
 /* 戻るボタン設定 */
@@ -102,6 +92,34 @@
 	-ms-border-radius: 40px; 
 	border-radius: 40px;
     border-color: black;
+}
+
+.add-form{
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    width: auto;
+    height: 80%;
+    z-index: 2;
+}
+
+@media screen and (max-width: 1300px) {
+    .header{
+        height: 100px;
+    }
+    .btn-back{
+        top: 70px;
+    }
+    .btn-logout{
+        top: 70px;
+    }
+    .icon-user{
+        top: 70px;
+    }
+    .add-form{
+        top: 120px;
+    }
 }
 
 /* 入力フォームに関する設定 */
