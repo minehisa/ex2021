@@ -22,7 +22,7 @@ CREATE TABLE paperdetail(
     author varchar(50),
     journal varchar(50),
     yearofpublic varchar(50),
-    paperpdf oid,
+    paperpdf bytea,
     primary key (paperid),
     foreign key (paperid) references paperbasic(paperid)
 );
