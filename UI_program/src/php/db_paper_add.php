@@ -84,9 +84,9 @@ if(isset($_POST['title']) && isset($_POST['author']) && isset($_POST['journal'])
 
 echo "論文追加画面に遷移します。";
 if($paper_add){
-    echo '<meta http-equiv="Refresh" content="3; url=./../html/paper_add.html">';
+    echo '<meta http-equiv="Refresh" content="3; url=./../html/paper_add.html?id=">';
 }else{
-    echo '<meta http-equiv="Refresh" content="3; url=./../html/paper_add.html">';
+    echo '<meta http-equiv="Refresh" content="3; url=./../html/paper_add.html?id=">';
 }
 
 ?>
