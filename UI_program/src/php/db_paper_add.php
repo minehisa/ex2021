@@ -1,10 +1,11 @@
 <?php
 
 $paper_add;
+$userid;
 
-if(isset($_POST['title']) && isset($_POST['author']) && isset($_POST['journal']) && isset($_POST['year']) && isset($_FILES['file'])){
+if(isset($_GET['id']) && isset($_POST['title']) && isset($_POST['author']) && isset($_POST['journal']) && isset($_POST['year'])){
 
-    $userid = 1;                //現在ログインしているユーザのidを代入
+    $userid = $_GET['id'];                //現在ログインしているユーザのidを代入
     $title = $_POST['title'];
     $author = $_POST['author'];
     $journal = $_POST['journal'];
@@ -84,9 +85,9 @@ if(isset($_POST['title']) && isset($_POST['author']) && isset($_POST['journal'])
 
 echo "論文追加画面に遷移します。";
 if($paper_add){
-    echo '<meta http-equiv="Refresh" content="3; url=./../html/paper_add.html?id=">';
+    echo "<meta http-equiv='Refresh' content='3; url=./../html/paper_add.php?id=$userid'>";
 }else{
-    echo '<meta http-equiv="Refresh" content="3; url=./../html/paper_add.html?id=">';
+    echo "<meta http-equiv='Refresh' content='3; url=./../html/paper_add.php?id=$userid'>";
 }
 
 ?>

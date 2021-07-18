@@ -49,7 +49,7 @@ if(isset($_POST['address']) && isset($_POST['pass'])){
 
     if($login){
         echo "メイン画面に遷移します。";
-        echo '<meta http-equiv="Refresh" content="3; url=./../html/main.html?id=">';
+        echo "<meta http-equiv='Refresh' content='3; url=./../html/main.php?id=$userid'>";
     }else{
         echo "ログイン画面に戻ります。";
         echo '<meta http-equiv="Refresh" content="3; url=./../html/login.html">';
