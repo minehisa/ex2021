@@ -68,6 +68,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  transition: .2s;
 }
 .btn-register:after{
   width: 100%;
@@ -84,6 +85,8 @@
 }
 .btn-register:hover{
   color: #ff6347;
+  background : #FFF;
+  transition: .2s;
 }
 .btn-register:hover:after{
   height: 240%;
@@ -111,6 +114,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  transition: .2s;
 }
 .btn-delete:after{
   width: 100%;
@@ -127,6 +131,8 @@
 }
 .btn-delete:hover{
   color: #1e90ff;
+  background : #FFF;
+  transition: .2s;
 }
 .btn-delete:hover:after{
   height: 240%;

@@ -114,6 +114,7 @@ p.pad5 {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    transition: .5s;
 }
 
 .btn-open:after {
@@ -132,6 +133,8 @@ p.pad5 {
 
 .btn-open:hover {
     color: #9ec34b;
+    background: #FFF;
+    transition: .5s;
 }
 
 .btn-open:hover:after {

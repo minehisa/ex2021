@@ -108,6 +108,7 @@ p.mb3 {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  transition: .2s;
 }
 
 .btn-open:after {
@@ -126,6 +127,8 @@ p.mb3 {
 
 .btn-open:hover {
   color: #9ec34b;
+  background : #FFF;
+  transition: .2s;
 }
 
 .btn-open:hover:after {

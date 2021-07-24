@@ -155,6 +155,7 @@ input[type="text"]{
     position: relative;
     overflow: hidden;
     z-index: 1;
+    transition: .2s;
 }
 .btn-submit:after {
     width: 100%;
@@ -171,6 +172,8 @@ input[type="text"]{
 }
 .btn-submit:hover {
     color: #9ec34b;
+    background: #FFF;
+    transition: .2s;
 }
 .btn-submit:hover:after {
     height: 240%;
