@@ -23,7 +23,8 @@ if(isset($id)){
                 echo "<td>";
                 echo "<input type='checkbox' name='checkbox[]' value='$paperid' form='delete'>";
                 echo "</td>";
-                echo "<td>$papername</td>";
+                echo "<td> <a href=\"./../html/paper_detail.php?paperid=$paperid\" target=\"_blank\">$papername </a> </td>";  
+            //    echo "<td>$papername</td>";
                 echo "<td>$updatetime</td>";
                 echo "<td>$regitime</td>";
                 echo "</tr>";
