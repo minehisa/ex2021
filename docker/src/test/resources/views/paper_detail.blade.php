@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=“ja”>
+  <head class="header">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ asset('/css/paper_detail.css') }}">
+    <!-- 下部にタイトルを動的に適用 -->
+    <title>book1</title>
+
+    <!--#に遷移先のURLを指定-->
+    <a href="#" class="btn-editbib">編集</a>
+    <a href="#" class="btn-editbib">BIB TEX形式</a>
+    <a href="{{ url('/main') }}" class="btn-back">戻る</a>
+    <a href="{{ url('/Top') }}" class="btn-logout">ログアウト</a>
+    <span class="icon-user"></span>
+  </head>
+  <body>
+    <div class="detail">
+      <!-- 下部にタイトルを動的に適用 -->
+      <div class="paper-name">論文名をここに</div>
+
+      <input id="detail-check1" class="detail-check" type="checkbox">
+      <label class="detail-label" for="detail-check1">詳細</label>
+      <div class="detail-content">
+        <table border="1">
+          <tr>
+            <th>論文名</th>
+            <td>ここに表示</td>
+          </tr>
+          <tr>
+            <th>著者</th>
+            <td>ここに表示</td>
+          </tr>
+          <tr>
+            <th>雑誌名</th>
+            <td>ここに表示</td>
+          </tr>
+          <tr>
+            <th>掲載年</th>
+            <td>ここに表示</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!--
+      PDFの有無による場合分け機構が必要
+      PDFの指定を動的にする必要あり
+    -->
+    <div class="show-pdf">
+      <iframe src="test.pdf">
+        <p><b>表示されない時の表示</b>: <a href="test.pdf">PDF をダウンロード</a>.</p>
+      </iframe>
+    </div>
+
+  </body>
+</html>

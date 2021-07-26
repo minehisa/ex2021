@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+/* ヘッダーエリアの設定 */
+.header{
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+}
+
+/* ヘッダーのボタン設定 */
+/* タイトル設定 */
+.page-title{
+    text-align: center;
+    font-size: 2.0em;
+    margin: 0 auto;
+    width: 500px;
+    height: 50px;
+    max-width: 800px;
+    border: solid 3px #000;
+}
+/* 戻るボタン設定 */
+.btn-back {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ffa500;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #ffa500;
+    position: absolute;
+    right: 180px;
+    top: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-back:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+.btn-back:hover {
+    color: #ffa500;
+}
+.btn-back:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+.btn-back:active:after {
+    height: 340%;
+    opacity: 1;
+}
+
+/* ログアウトボタン設定 */
+.btn-logout{
+    display: inline-block;
+    color: #0000ee;
+    position: absolute;
+    right: 70px;
+    top: 15px;
+}
+.btn-logout:hover{
+    color: #87cefa;
+}
+/* ユーザーアイコン設定 */
+.icon-user{
+    display: inline-block;
+	width: 40px;
+	height: 40px;
+    position: absolute;
+    right: 25px;
+    top: 5px;
+	background: pink;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	-o-border-radius: 40px;
+	-ms-border-radius: 40px; 
+	border-radius: 40px;
+    border-color: black;
+}
+
+.add-form{
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    width: auto;
+    height: 80%;
+    z-index: 2;
+}
+
+@media screen and (max-width: 1300px) {
+    .header{
+        height: 100px;
+    }
+    .btn-back{
+        top: 70px;
+    }
+    .btn-logout{
+        top: 70px;
+    }
+    .icon-user{
+        top: 70px;
+    }
+    .add-form{
+        top: 120px;
+    }
+}
+
+/* 入力フォームに関する設定 */
+p {
+    display: block;
+    padding: 10px;
+}
+input[type="text"]{
+    height: 30px;
+  }
+  
+.container {
+    font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+
+/* 追加ボタンに関する設定 */
+.btn-submit {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #9ec34b;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #9ec34b;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-submit:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+.btn-submit:hover {
+    color: #9ec34b;
+}
+.btn-submit:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+.btn-submit:active:after {
+    height: 340%;
+    opacity: 1;
+}
+
+/* ドラッグ＆ドロップのエリアの設定 */
+.dragdrop{
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    max-height: 400px;
+}
