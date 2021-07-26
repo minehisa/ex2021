@@ -18,7 +18,7 @@
       <a href="./../Top.html" class="btn-logout">ログアウト</a>
       <span class="icon-user"></span>
     </div>
-    <h1 class="page-title">論文追加</h1>
+    <h1 class="page-title">メイン画面</h1>
     <div>
       <!--<a href="./paper_add.html" class="btn-register">+ 　新規登録　</a>-->
       <input type="submit" value="+ 　新規登録" class="btn-register" form="paperadd">
