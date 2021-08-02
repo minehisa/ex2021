@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
-  <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
+  <link rel="stylesheet" href="<?php echo e(asset('/css/paper_add.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('/css/dropzone.css')); ?>">
+  <script type="text/javascript" src="<?php echo e(asset('/js/dropzone.js')); ?>"></script>
   <!-- 下部にタイトルを動的に適用 -->
   <title>文献追加</title>
 </head>
@@ -13,8 +13,8 @@
 <body>
   <div class="header">
     <h1 class="page-title">論文追加</h1>
-    <a href="{{ url('/main') }}" class="btn-back">戻る</a>
-    <a href="{{ url('/Top') }}" class="btn-logout">ログアウト</a>
+    <a href="<?php echo e(url('/main')); ?>" class="btn-back">戻る</a>
+    <a href="<?php echo e(url('/Top')); ?>" class="btn-logout">ログアウト</a>
     <span class="icon-user"></span>
   </div>
   <div class="add-form">
@@ -62,3 +62,4 @@
 </body>
 
 </html>
+<?php /**PATH /var/www/html/resources/views/paper_add.blade.php ENDPATH**/ ?>
