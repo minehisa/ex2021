@@ -26,21 +26,34 @@ class MainController extends Controller
         // return view('main', ['models'=>$models]);
     }
 
-    // 論文追加
-    public function post(REquest $request)
+    public function add_index()
     {
-        // まだ途中
+        return view('paper_add');
+    }
+
+    public function add(Request $request)
+    {
+
+        return view('paper_add');
+    }
+
+    // 論文追加
+    public function post(Request $request)
+    {
         $paperbasic = new Paperbasics();
-        $paperbasic->paperid;
+        // $paperbasic->paperid;    bigincrements
         $paperbasic->id = Auth::id();
-        $paperdetails = new Paperdetail();
-        $paperdetails->papernname;
-        $paperdetails->author;
-        $paperdetails->journal;
-        $paperdetails->yearofpublic;
+        $paperbasic->updatetime = now();
+        $paperbasic->regittime = now();
         $paperbasic->save();
+        $paperdetails = new Paperdetail();
+        $paperdetails->papername = $request->title;
+        $paperdetails->author = $request->author;
+        $paperdetails->journal = $request->journal;
+        $paperdetails->yearofpublic = $request->year;
         $paperdetails->save();
-        return response("登録しました", 200);
+        // return response("登録しました", 200);
+        return view('paper_add');
     }
 
     // 論文削除

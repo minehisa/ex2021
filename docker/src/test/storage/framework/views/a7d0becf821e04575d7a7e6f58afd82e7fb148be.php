@@ -24,7 +24,7 @@
     </div>
     <h1 class="page-title">論文追加</h1>
     <div>
-        <a href="./paper_add.html" class="btn-register">+ 　新規登録　</a>
+        <a href="<?php echo e(url('/paper_add')); ?>" class="btn-register">+ 　新規登録　</a>
     </div>
     <div>
         <a href="#" class="btn-delete">- 登録論文削除</a>
