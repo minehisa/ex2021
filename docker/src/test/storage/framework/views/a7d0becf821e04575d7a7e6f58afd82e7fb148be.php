@@ -9,6 +9,15 @@
     <title>メイン画面</title>
 </head>
 
+<?php
+        include("php/db_main_delete.php");   //論文削除
+        //ディレクトリpublicを参照
+?>
+
+<form method="GET" action="<?php echo e(route('main')); ?>" id="delete">
+    <?php echo csrf_field(); ?>
+</form>
+
 <body>
     <div class="header">
         <!-- <a href="<?php echo e(route('logout')); ?>" class="btn-logout">ログアウト</a> -->
@@ -27,8 +36,11 @@
         <a href="<?php echo e(url('/paper_add')); ?>" class="btn-register">+ 　新規登録　</a>
     </div>
     <div>
-        <a href="#" class="btn-delete">- 登録論文削除</a>
+       <!-- <a href="#" class="btn-delete" >- 登録論文削除</a>-->
+       <input type="submit" value="登録論文削除" class="btn-delete" form="delete">
     </div>
+
+
 
     <table border="1" style="border-collapse: collapse">
         <tr>
@@ -37,6 +49,10 @@
             <th bgcolor="#cccccc">最終更新日</th>
             <th bgcolor="#cccccc">登録日時</th>
         </tr>
+        <?php
+            include("php/db_main_select.php");   //ディレクトリpublicを参照
+        ?>
+
     </table>
 
     <!-- <div id="app"> -->
@@ -58,8 +74,8 @@
         <bootstrap-table-component models='<?php echo json_encode($models, 15, 512) ?>' />
     </div>
 
+
     <script src="<?php echo e(mix('js/app.js')); ?>"></script>
 </body>
-
 </html>
 <?php /**PATH /var/www/html/resources/views/main.blade.php ENDPATH**/ ?>

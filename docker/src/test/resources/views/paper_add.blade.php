@@ -18,9 +18,9 @@
     <span class="icon-user"></span>
   </div>
   <div class="add-form">
-    <!-- <from>
-      <form action="./../php/db_paper_add.php" method="post" id="my-awesome-dropzone" enctype="multipart/form-data">
-      </form> -->
+      <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data">
+      @csrf
+      </form>
       <br>
       <p>論文名:
         <input type="text" name="title" size="50" form="my-awesome-dropzone">
@@ -60,5 +60,10 @@
     </from>
   </div>
 </body>
+
+<?php
+  include("php/db_paper_add.php");   //ディレクトリpublicを参照
+?>
+
 
 </html>

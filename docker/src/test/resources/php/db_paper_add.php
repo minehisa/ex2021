@@ -3,6 +3,15 @@
 $paper_add;
 $userid;
 
+// DB接続情報
+$dsn = "pgsql:host=pgsql;port=5432; dbname=postgres;";
+$username = "default";
+
+try{
+    // データベースへの接続を表すPDOインスタンスを生成
+    $dbh = new PDO($dsn, $username);
+}
+/*
 if(isset($_GET['id']) && isset($_POST['title']) && isset($_POST['author']) && isset($_POST['journal']) && isset($_POST['year'])){
 
     $userid = $_GET['id'];                //現在ログインしているユーザのidを代入
@@ -27,7 +36,7 @@ if(isset($_GET['id']) && isset($_POST['title']) && isset($_POST['author']) && is
     try{
         // データベースへの接続を表すPDOインスタンスを生成
         $dbh = new PDO($dsn, $username);
-  
+
         // paperbasicにデータ追加
         $sql_insert = "INSERT INTO paperbasic(id, papername, updatetime, regitime) 
                 VALUES ($userid, '$title', '$updatetime', '$regitime');";
@@ -89,5 +98,5 @@ if($paper_add){
 }else{
     echo "<meta http-equiv='Refresh' content='3; url=./../html/paper_add.php?id=$userid'>";
 }
-
+*/
 ?>
