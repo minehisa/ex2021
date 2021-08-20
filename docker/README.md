@@ -103,4 +103,6 @@ php artisan db:seed
 ./clear_cashe.sh に一応用意してます．
 ＋スパーリロードなど
 
-    
+軽量化
+wslで使う場合のみ
+.wslconfigをユーザー直下におく

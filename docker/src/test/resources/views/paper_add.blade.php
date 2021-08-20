@@ -2,12 +2,22 @@
 <html lang=“ja”>
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
-  <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
-  <!-- 下部にタイトルを動的に適用 -->
-  <title>文献追加</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}"> -->
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Scripts -->
+    <!-- <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script> -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- <script type="module">
+        @yield('script')
+    </script> -->
+
+    <!-- 下部にタイトルを動的に適用 -->
+    <title>文献追加</title>
 </head>
 
 <body>
@@ -19,7 +29,7 @@
   </div>
   <div class="add-form">
       <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data">
-      @csrf
+      {{ csrf_field() }}
       </form>
       <br>
       <p>論文名:
@@ -32,10 +42,19 @@
         <input type="text" name="journal" size="50" form="my-awesome-dropzone">
       </p>
       <p>掲載年:
-        <input type="text" name="year" size="50" form="my-awesome-dropzone">
+        <input type="text" name="yearofpublic" size="50" form="my-awesome-dropzone">
       </p>
       <br>
       <p>PDFをドラッグ&ドロップ</p>
+
+      <script type="text/javascript">
+        Dropzone.options.imageUpload = {
+        dictDefaultMessage: 'アップロードするファイルをここへドロップしてください',
+        acceptedFiles: '.pdf',
+        maxFilesize: 5, // 5MBまで
+    　　maxFiles: 1 // ファイルは1つまでアップロード可能
+        }
+    </script>
       <!--
           とりあえず dropzone.jsを採用（dropzone.css、dropzone.jsを使用）
           詳しくはhttps://www.dropzonejs.com など参照

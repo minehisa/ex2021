@@ -17,7 +17,7 @@ class CreatePaperdetailsTable extends Migration
 
     Schema::create('paperdetails', function (Blueprint $table) {
       // $table->foreignId('paperid')->constrained('paperbasics');
-      $table->bigIncrements('paperid');
+      $table->bigIncrements('paperid')->autoIncrement()->unique();
       $table->string('papername', 50);
       $table->string('author', 50);
       $table->string('journal', 50);

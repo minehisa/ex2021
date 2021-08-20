@@ -18,7 +18,8 @@ class CreatePaperdetailsTable extends Migration
     Schema::enableForeignKeyConstraints();
     Schema::create('paperdetails', function (Blueprint $table) {
       // $table->foreignId('paperid')->constrained('paperbasics');
-      $table->unsignedbigInteger('paperid')->unique();
+    //   $table->unsignedbigInteger('paperid')->unique();
+    $table->bigIncrements('paperid');
       $table->string('papername', 50);
       $table->string('author', 50);
       $table->string('journal', 50);
@@ -28,7 +29,7 @@ class CreatePaperdetailsTable extends Migration
 
       // PK 設定
       // $table->dropPrimary();
-      $table->primary(['paperid']);
+    //   $table->primary(['paperid']);
       // FK
       $table->foreign('paperid')->references('paperid')->on('paperbasic')->onDelete('cascade');
     });
