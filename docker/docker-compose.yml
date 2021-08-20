@@ -2,13 +2,20 @@ version: '3'
 
 volumes:
   db-data:
+  bootstrap_cache:
+  storage:
+  node_modules:
+  vendor:
 
 services:
   php-cli: # Web server for remote debug on PhpStorm.
     build: ./docker
     volumes:
-      - ./src/test:/var/www/html/ # ro: Read-Only
-      # - ./docker/php.ini:/usr/local/etc/php/php.ini
+      - ./src/test:/var/www/html/
+      - bootstrap_cache:/var/www/html/bootstrap/cache
+      - storage:/var/www/html/storage
+      - node_modules:/var/www/html/node_modules
+      - vendor:/var/www/html/vendor
     working_dir: /var/www/html
     container_name: php-cli
     depends_on:
@@ -22,7 +29,10 @@ services:
       # - 443:443
     volumes:
       - ./src/test:/var/www/html/
-      # - ./docker/php.ini:/usr/local/etc/php/php.ini
+      - bootstrap_cache:/var/www/html/bootstrap/cache
+      - storage:/var/www/html/storage
+      - node_modules:/var/www/html/node_modules
+      - vendor:/var/www/html/vendor
     working_dir: /var/www/html
     container_name: web
     depends_on:

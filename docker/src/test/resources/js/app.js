@@ -26,6 +26,22 @@ Vue.component('vue-bootstrap4-table', require('./components/Bootstrap4TableCompo
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+/*
+Dropzone 用の設定
+*/
+
+require('./bootstrap');
+
+window.Dropzone = require('dropzone');
+
+$(function () {
+   // Here the default dropzone code:
+    var myDropzone = new Dropzone(document.body, {
+        url: "/paper_add"
+    });
+});
+
  Vue.config.devtools = true;
 
 const app = new Vue({

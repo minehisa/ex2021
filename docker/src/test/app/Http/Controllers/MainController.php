@@ -15,13 +15,11 @@ class MainController extends Controller
         return view('main');
     }
 
-
+    // 論文追加
     public function add_index()
     {
         return view('paper_add');
     }
-
-    // 論文追加
     public function add_paper(Request $request)
     {
         $paperbasic = new Paperbasics();
@@ -37,6 +35,11 @@ class MainController extends Controller
         $paperdetails->yearofpublic = $request->year;
         $paperdetails->save();
         // return response("登録しました", 200);
+
+        // dropzpne
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+        $file->move(public_path('pdf'), $filename);
         return view('paper_add');
     }
 

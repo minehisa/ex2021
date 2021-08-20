@@ -11,7 +11,7 @@ class Paperdetail extends Model
   public $timestamps = false;
 
   protected $fillable = [
-    // 'paperid'
+    'paperid',
     'papername',
     'journal',
     'yearofpublic',
@@ -19,7 +19,7 @@ class Paperdetail extends Model
   ];
 
   public $sortable = [
-    'paperid',
+    // 'paperid',
     'papername'
   ];
 
