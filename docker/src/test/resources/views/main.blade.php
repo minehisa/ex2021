@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> -->
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <title>メイン画面</title>
 </head>
 
 <?php
-        include("php/db_main_delete.php");   //論文削除
+        // include("php/db_main_delete.php");   //論文削除
         //ディレクトリpublicを参照
 ?>
+
 
 <form method="GET" action="{{ route('main') }}" id="delete">
     @csrf
@@ -20,7 +24,6 @@
 
 <body>
     <div class="header">
-        <!-- <a href="{{ route('logout') }}" class="btn-logout">ログアウト</a> -->
         <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">
             {{ __('ログアウト') }}
@@ -40,7 +43,7 @@
     </div>
 
 
-
+<!--
     <table border="1" style="border-collapse: collapse">
         <tr>
             <th bgcolor="#cccccc"> </th>
@@ -49,31 +52,22 @@
             <th bgcolor="#cccccc">登録日時</th>
         </tr>
         <?php
-            include("php/db_main_select.php");   //ディレクトリpublicを参照
+            // include("php/db_main_select.php");   //ディレクトリpublicを参照
         ?>
 
-    </table>
+    </table> -->
 
-    <!-- <div id="app"> -->
-    <!-- <div class="row justify-content-center"> -->
-    <!-- <example-component></example-component> -->
-    <!-- <main-table></main-table> -->
-    <!-- </div> -->
-    <!-- </div> -->
-
-
-    <!-- vue.js -->
-    <!-- <div class="maintable">
-        <main-table></main-table>
+    <!-- <div id="app">
+        <div class="row justify-content-center">
+            <main-component></main-component>
+        </div>
     </div> -->
 
-    <!-- bootstrap-table -->
-    <div class="container">
-        このしたにコンポーネント
-        <bootstrap-table-component models='@json($models)' />
+    <!-- https://github.com/rubanraj54/vue-bootstrap4-table#17-events -->
+    <div class="container" id="app">
+        <vue-bootstrap4-table />
     </div>
 
-
-    <script src="{{ mix('js/app.js') }}"></script>
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 </body>
 </html>

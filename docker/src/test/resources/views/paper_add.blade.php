@@ -52,18 +52,9 @@
         <input type="submit" value="追加" class="btn-submit" form="my-awesome-dropzone">
       </p>
 
-      <!--
-      <p>
-        <a type="submit" class="btn-submit">追加</a>
-      </p>
-       -->
     </from>
   </div>
 </body>
-
-<?php
-  include("php/db_paper_add.php");   //ディレクトリpublicを参照
-?>
 
 
 </html>

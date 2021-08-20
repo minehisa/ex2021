@@ -48,6 +48,8 @@ composer install
 npm install
 npm run dev
 ```
+開発時は npm run watch の方が便利
+（※動かない場合は npm run watch-poll）
 
 エラー時
 ```
@@ -76,6 +78,9 @@ php artisan migrate:fresh
 ```
 php artisan db:seed
 ```
+ログイン時に確認するとき
+メールアドレス；tinker or pgadmi4で確認
+パスワード：aaaaaaaa
 
 ### ページ遷移
 1. ルーティング追記  
@@ -87,4 +92,15 @@ php artisan db:seed
     php artisan make:controller --resource nameController
     ```
     
-3. name,blade.phpの作成  
+3. name,blade.phpの作成
+    resource/views以下に記載
+
+
+### その他
+.gitignore 随時変更中
+
+キャッシュ削除関連
+./clear_cashe.sh に一応用意してます．
+＋スパーリロードなど
+
+    

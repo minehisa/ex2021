@@ -21,8 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 
 Route::group(["middleware" => "auth.api"], function () {
-  Route::get('/main', 'MainController@get');
-  Route::post('/main', 'MainController@post');
-  Route::delete('/main/{paperid}', 'MainController@delete');
-  Route::put('/main/{paperid}', 'MainController@update');
+    // 論文表示
+    // Route::get('/main/papers', 'API\PaperController@get_paper_vue');
+    Route::get('/main/papers', 'API\PaperController@get_paper_bootstrap');
+    // 論文削除
+    Route::post('/main/delete', 'API\PaperController@delete');
 });

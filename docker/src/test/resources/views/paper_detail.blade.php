@@ -13,10 +13,12 @@
     <a href="{{ url('/Top') }}" class="btn-logout">ログアウト</a>
     <span class="icon-user"></span>
   </head>
+
+
   <body>
     <div class="detail">
       <!-- 下部にタイトルを動的に適用 -->
-      <div class="paper-name">論文名をここに</div>
+      <div class="paper-name">{{$data->papername}}</div>
 
       <input id="detail-check1" class="detail-check" type="checkbox">
       <label class="detail-label" for="detail-check1">詳細</label>
@@ -24,19 +26,19 @@
         <table border="1">
           <tr>
             <th>論文名</th>
-            <td>ここに表示</td>
+            <td>{{$data->papername}}</td>
           </tr>
           <tr>
             <th>著者</th>
-            <td>ここに表示</td>
+            <td>{{$data->author}}</td>
           </tr>
           <tr>
             <th>雑誌名</th>
-            <td>ここに表示</td>
+            <td>{{$data->journal}}</td>
           </tr>
           <tr>
             <th>掲載年</th>
-            <td>ここに表示</td>
+            <td>{{$data->yearofpublic}}</td>
           </tr>
         </table>
       </div>

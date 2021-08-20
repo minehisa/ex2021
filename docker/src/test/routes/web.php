@@ -42,13 +42,16 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 /* ログイン時のみ遷移 */
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/main', 'MainController@index')->name('main');
+    // Route::get('/main/papers', 'MainController@get_paper')->name('main.paper');
     // 論文追加
     Route::get('/paper_add', 'MainController@add_index')->name('paper_add');
-    Route::post('/paper_add', 'MainController@add')->name('paper_add');
-    // 論文削除
+    Route::post('/paper_add', '@MainControlleradd_paper')->name('paper_add');
+    // 論文詳細
+    Route::get('/paper_detail/{paperid}', 'MainController@detail')->name('paper_detail');
 
 });
 
+Route::get('/paper_detail', 'MainController@detail')->name('paper_detail');
 /* 認証 */
 Auth::routes();
 

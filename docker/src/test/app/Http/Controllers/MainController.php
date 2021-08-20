@@ -12,33 +12,17 @@ class MainController extends Controller
 {
     public function index()
     {
-        // return view('main');
-        $models = Auth::user()->paperbasic()->get();
-        return view('main', ['models'=>$models]);
+        return view('main');
     }
 
-    // app/api.php にルート追記
-    // 全論文表示
-    public function get()
-    {
-        return response()->json(Auth::user()->paperbasic()->get());
-        // $models = Auth::user()->paperbasic()->get();
-        // return view('main', ['models'=>$models]);
-    }
 
     public function add_index()
     {
         return view('paper_add');
     }
 
-    public function add(Request $request)
-    {
-
-        return view('paper_add');
-    }
-
     // 論文追加
-    public function post(Request $request)
+    public function add_paper(Request $request)
     {
         $paperbasic = new Paperbasics();
         // $paperbasic->paperid;    bigincrements
@@ -56,19 +40,11 @@ class MainController extends Controller
         return view('paper_add');
     }
 
-    // 論文削除
-    public function delete($paperid)
-    {
-        Paperbasics::find($paperid)->delete();
-        return response("削除しました", 200);
-    }
 
-    // 更新
-    public function update(Request $request, $paperid)
+    // 論文詳細
+    public function detail($paperid)
     {
-        $paperbasic = Paperbasics::find($paperid);
-        $paperbasic->paperid = $request->paperid;
-        $paperbasic->save();
-        return response("OK", 200);
+        $data = Paperdetail::find($paperid);
+        return view('paper_detail', compact("data"));
     }
 }

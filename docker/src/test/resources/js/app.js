@@ -8,23 +8,6 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-
-// 追加
-/*
-require('@fortawesome/fontawesome-free/js/all.js');
-require('bootstrap-table/dist/bootstrap-table.min.css');
-require('bootstrap-table/dist/bootstrap-table.js');
-
-// require('tableexport.jquery.plugin');
-require('bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js');
-require('bootstrap-table/dist/extensions/print/bootstrap-table-print.min.js');
-
-require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.css');
-require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js');
-*/
-// 追加終了
-
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,20 +16,17 @@ require('bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-c
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('main-table', require('./components/MytableBootstrap.vue').default);
-// Vue.component('main-table', require('./components/MainTable.vue').default);
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('bootstrap-table-component', require('./components/BootstrapTableComponent.vue').default);
-
+// Vue.component('main-component', require('./components/MainComponent.vue').default);
+Vue.component('vue-bootstrap4-table', require('./components/Bootstrap4TableComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+ Vue.config.devtools = true;
 
 const app = new Vue({
     el: '#app',
