@@ -10,44 +10,53 @@ use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
-    public function index()
-    {
-        return view('main');
-    }
+  public function index()
+  {
+    return view('main');
+  }
 
-    // 論文追加
-    public function add_index()
-    {
-        return view('paper_add');
-    }
-    public function add_paper(Request $request)
-    {
-        $paperbasic = new Paperbasics();
-        // $paperbasic->paperid;    bigincrements
-        $paperbasic->id = Auth::id();
-        $paperbasic->updatetime = now();
-        $paperbasic->regittime = now();
-        $paperbasic->save();
-        $paperdetails = new Paperdetail();
-        $paperdetails->papername = $request->title;
-        $paperdetails->author = $request->author;
-        $paperdetails->journal = $request->journal;
-        $paperdetails->yearofpublic = $request->year;
-        $paperdetails->save();
-        // return response("登録しました", 200);
+  // 論文追加
+  public function add_paper()
+  {
+    return view('paper_add');
+  }
+  public function upload_paper(Request $request)
+  {
+    date_default_timezone_set('Asia/Tokyo');
 
-        // dropzpne
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName();
-        $file->move(public_path('pdf'), $filename);
-        return view('paper_add');
-    }
+    $paperbasic = new Paperbasics();
+    // $paperbasic->paperid;    bigincrements
+    $paperbasic->id = Auth::id();
+    $paperbasic->updatetime = now();
+    $paperbasic->regittime = now();
+    $paperbasic->save();
+    $paperdetails = new Paperdetail();
+    $paperdetails->papername = $request->papername;
+    $paperdetails->author = $request->author;
+    $paperdetails->journal = $request->journal;
+    $paperdetails->yearofpublic = $request->yearofpublic;
+    // PDF 保存
+    // $paperdetails->paperpdf = $request->paperpdf;
+    $file = $request->file('file');
+    $filename = Auth::id() . '_' . $paperbasic->paperid . '_' . $request->papername . '.pdf';
+    $dir = 'public';
+    $file->storeAs($dir, $filename, ['disk' => 'local']);
+    $paperdetails->paperpdf = $filename;
+
+    $paperdetails->save();
+
+    // dropzpne
+    // $file = $request->file('file');
+    // $filename = $file->getClientOriginalName();
+    // $file->move(public_path('pdf'), $filename);
+    return view('paper_add');
+  }
 
 
-    // 論文詳細
-    public function detail($paperid)
-    {
-        $data = Paperdetail::find($paperid);
-        return view('paper_detail', compact("data"));
-    }
+  // 論文詳細
+  public function detail($paperid)
+  {
+    $data = Paperdetail::find($paperid);
+    return view('paper_detail', compact("data"));
+  }
 }

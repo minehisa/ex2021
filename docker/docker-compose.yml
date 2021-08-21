@@ -12,8 +12,9 @@ services:
     build: ./docker
     volumes:
       - ./src/test:/var/www/html/
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini
       - bootstrap_cache:/var/www/html/bootstrap/cache
-      - storage:/var/www/html/storage
+      # - storage_framework:/var/www/html/storage/
       - node_modules:/var/www/html/node_modules
       - vendor:/var/www/html/vendor
     working_dir: /var/www/html
@@ -29,8 +30,9 @@ services:
       # - 443:443
     volumes:
       - ./src/test:/var/www/html/
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini
       - bootstrap_cache:/var/www/html/bootstrap/cache
-      - storage:/var/www/html/storage
+      # - storage:/var/www/html/storage/
       - node_modules:/var/www/html/node_modules
       - vendor:/var/www/html/vendor
     working_dir: /var/www/html

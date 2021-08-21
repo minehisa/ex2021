@@ -19,6 +19,7 @@ Route::get('/', function () {
   return view('Top');
 });
 */
+
 Route::view('/', 'Top');
 
 
@@ -40,15 +41,14 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 */
 
 /* ログイン時のみ遷移 */
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/main', 'MainController@index')->name('main');
-    // Route::get('/main/papers', 'MainController@get_paper')->name('main.paper');
-    // 論文追加
-    Route::get('/paper_add', 'MainController@add_index')->name('paper_add');
-    Route::post('/paper_add', 'MainController@add_paper')->name('paper_add.store');
-    // 論文詳細
-    Route::get('/paper_detail/{paperid}', 'MainController@detail')->name('paper_detail');
-
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/main', 'MainController@index')->name('main');
+  // Route::get('/main/papers', 'MainController@get_paper')->name('main.paper');
+  // 論文追加
+  Route::get('/paper_add', 'MainController@add_paper')->name('paper_add');
+  Route::post('/paper_add', 'MainController@upload_paper')->name('paper_add');
+  // 論文詳細
+  Route::get('/paper_detail/{paperid}', 'MainController@detail')->name('paper_detail');
 });
 
 Route::get('/paper_detail', 'MainController@detail')->name('paper_detail');
