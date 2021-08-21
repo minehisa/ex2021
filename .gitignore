@@ -4,3 +4,4 @@ docker/docker/pgadmin4/pgadmin4.db
 docker/docker/pgadmin4/sessions/
 docker/docker/pgadmin4/pgadmin4.db
 docker/src/test/storage/logs/laravel.log
+docker/docker/pgadmin4/pgadmin4.db
