@@ -54,7 +54,7 @@ npm run dev
 エラー時
 ```
 バージョンの問題
-npm uninstall --save-dev sass-loader && npm install --save-dev sass-loader@7.1.0
+npm uninstall --save-dev sass-loader && npm install --save-dev app@version
 
 jsモジュールを全部消し、npmのキャッシュをクリアした上で再度モジュールを入れ直す
 rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm install

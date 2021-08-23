@@ -22,10 +22,26 @@ class MainController extends Controller
   }
   public function upload_paper(Request $request)
   {
-    date_default_timezone_set('Asia/Tokyo');
+    // date_default_timezone_set('Asia/Tokyo');
+
+    $request->validate(
+      [
+        'papername' => 'required',
+        'author' => 'required',
+        'journal' => 'required',
+        'yearofpublic' => 'required',
+        'file' => 'required'
+      ],
+      [
+        'papername.required' => '必須項目です．',
+        'author.required' => '必須項目です．',
+        'journal.required' => '必須項目です．',
+        'yearofpublic.required' => '必須項目です．',
+        'file.required' => '必須項目です．'
+      ]
+    );
 
     $paperbasic = new Paperbasics();
-    // $paperbasic->paperid;    bigincrements
     $paperbasic->id = Auth::id();
     $paperbasic->updatetime = now();
     $paperbasic->regittime = now();

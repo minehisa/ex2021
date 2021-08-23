@@ -1,47 +1,62 @@
 <template>
-    <vue-bootstrap4-table
-        :rows="rows"
-        :columns="columns"
-        :config="config"
-        :actions="actions"
-        @on-change-query="onChangeQuery"
-        :total-rows="total_rows"
-    >
-        <template slot="sort-asc-icon">
-            <i class="fa fa-sort-up">↑</i>
-        </template>
-        <template slot="sort-desc-icon">
-            <i class="fa fa-sort-down">↓</i>
-        </template>
-        <template slot="no-sort-icon">
-            <i class="fa fa-sort">↕️</i>
-        </template>
-        <template slot="paginataion-previous-button">
-            Previous
-        </template>
-        <template slot="paginataion-next-button">
-            Next
-        </template>
+    <div>
+        <div>
+            <a :href="'/paper_add'" class="btn-register">+ 　新規登録　</a>
+        </div>
+        <div>
+            <input type="submit" value="登録論文削除" class="btn-delete" form="delete">
+        </div>
+        <vue-bootstrap4-table
+            :rows="rows"
+            :columns="columns"
+            :config="config"
+            :actions="actions"
+            @on-change-query="onChangeQuery"
+            :total-rows="total_rows"
+        >
+            <template slot="sort-asc-icon">
+                <i class="fa fa-sort-up">↑</i>
+            </template>
+            <template slot="sort-desc-icon">
+                <i class="fa fa-sort-down">↓</i>
+            </template>
+            <template slot="no-sort-icon">
+                <i class="fa fa-sort">↕️</i>
+            </template>
+            <template slot="paginataion-previous-button">
+                Previous
+            </template>
+            <template slot="paginataion-next-button">
+                Next
+            </template>
 
-        <template slot="refresh-button-text">
-            Refresh
-        </template>
-        <template slot="reset-button-text">
-            Reset
-        </template>
-        <templete slot="papername" slot-scope="props">
-            <a href="#" v-on:click="openLinkInNewTab(props.row)">{{props.cell_value}}</a>
-        </templete>
-        <templete slot="empty-results">
-            論文を追加してください．
-        </templete>
+            <template slot="refresh-button-text">
+                Refresh
+            </template>
+            <template slot="reset-button-text">
+                Reset
+            </template>
+            <template slot="updatetime" slot-scope="props">
+                {{ formatDate(props.cell_value) }}
+            </template>
+            <template slot="regittime" slot-scope="props">
+                {{ formatDate(props.cell_value) }}
+            </template>
+            <template slot="papername" slot-scope="props">
+                <a href="#" v-on:click="openLinkInNewTab(props.row)">{{props.cell_value}}</a>
+            </template>
+            <template slot="empty-results">
+                論文を追加してください．
+            </template>
 
-    </vue-bootstrap4-table>
+        </vue-bootstrap4-table>
+    </div>
 </template>
 
 <script>
 import axios from "axios";
 import VueBootstrap4Table from "vue-bootstrap4-table";
+import moment from 'moment';
 export default {
     name: "App",
     data: function() {
@@ -156,6 +171,10 @@ export default {
             let url = '/paper_detail/' + object.paperid;
             // console.log(url)
             window.open(url, '_blank')
+        },
+
+        formatDate (date) {
+            return moment(date).utc().format('YYYY/MM/DD HH:mm:SS')
         }
     },
     components: {

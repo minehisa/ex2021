@@ -34,6 +34,8 @@
     <span class="icon-user"></span>
   </div>
   <h1 class="page-title">Main画面</h1>
+
+
   <div>
     <a href="{{ url('/paper_add') }}" class="btn-register">+ 　新規登録　</a>
   </div>

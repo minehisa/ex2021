@@ -35,43 +35,57 @@
   </div>
   <div class="add-form">
     <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data">
-      {{ csrf_field() }}
-    </form>
-    <br>
-    <p>論文名:
-      <input type="text" name="papername" size="50" form="my-awesome-dropzone">
-    </p>
-    <p>著者名:
-      <input type="text" name="author" size="50" form="my-awesome-dropzone">
-    </p>
-    <p>雑誌名:
-      <input type="text" name="journal" size="50" form="my-awesome-dropzone">
-    </p>
-    <p>掲載年:
-      <input type="text" name="yearofpublic" size="50" form="my-awesome-dropzone">
-    </p>
-    <br>
-    <p>PDFをドラッグ&ドロップ</p>
+      @csrf
+      <br>
+      <p>論文名:
+        @if($errors->has('papername'))
+        {{ $errors->first('papername') }}<br>
+        @endif
+        <input type="text" name="papername" size="50" form="my-awesome-dropzone">
+      </p>
+      <p>著者名:
+        @if($errors->has('author'))
+        {{ $errors->first('author') }}<br>
+        @endif
+        <input type="text" name="author" size="50" form="my-awesome-dropzone">
+      </p>
+      <p>雑誌名:
+        @if($errors->has('journal'))
+        {{ $errors->first('journal') }}<br>
+        @endif
+        <input type="text" name="journal" size="50" form="my-awesome-dropzone">
+      </p>
+      <p>掲載年:
+        @if($errors->has('yearofpublic'))
+        {{ $errors->first('yearofpublic') }}<br>
+        @endif
+        <input type="text" name="yearofpublic" size="50" form="my-awesome-dropzone">
+      </p>
+      <br>
+      <p>PDFをドラッグ&ドロップ</p>
 
-    <!--
+      <!--
           とりあえず dropzone.jsを採用（dropzone.css、dropzone.jsを使用）
           詳しくはhttps://www.dropzonejs.com など参照
           データの扱い方によってここのフォームは変えるべき
         -->
-    <!--
+      <!--
       <div class="dragdrop">
         <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
       </div>
       -->
 
-    <input type="file" name="file" form="my-awesome-dropzone" accept=".pdf">
-    <!-- <input type="text" name="paperpdf" size="50" form="my-awesome-dropzone"> -->
+      @if($errors->has('file'))
+      {{ $errors->first('file') }}<br>
+      @endif
+      <input type="file" name="file" form="my-awesome-dropzone" accept=".pdf">
+      <!-- <input type="text" name="paperpdf" size="50" form="my-awesome-dropzone"> -->
 
-    <p>
-      <input type="submit" value="追加" class="btn-submit" form="my-awesome-dropzone">
-    </p>
+      <p>
+        <input type="submit" value="追加" class="btn-submit" form="my-awesome-dropzone">
+      </p>
 
-    </from>
+      </from>
   </div>
 </body>
 
