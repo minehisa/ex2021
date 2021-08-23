@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div>
+        <!-- <div>
             <a :href="'/paper_add'" class="btn-register">+ 　新規登録　</a>
         </div>
         <div>
             <input type="submit" value="登録論文削除" class="btn-delete" form="delete">
-        </div>
+        </div> -->
         <vue-bootstrap4-table
             :rows="rows"
             :columns="columns"
