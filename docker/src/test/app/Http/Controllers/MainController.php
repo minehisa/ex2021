@@ -41,25 +41,43 @@ class MainController extends Controller
       ]
     );
 
-    $paperbasic = new Paperbasics();
-    $paperbasic->id = Auth::id();
-    $paperbasic->updatetime = now();
-    $paperbasic->regittime = now();
-    $paperbasic->save();
-    $paperdetails = new Paperdetail();
-    $paperdetails->papername = $request->papername;
-    $paperdetails->author = $request->author;
-    $paperdetails->journal = $request->journal;
-    $paperdetails->yearofpublic = $request->yearofpublic;
-    // PDF 保存
-    // $paperdetails->paperpdf = $request->paperpdf;
-    $file = $request->file('file');
-    $filename = Auth::id() . '_' . $paperbasic->paperid . '_' . $request->papername . '.pdf';
-    $dir = 'public';
-    $file->storeAs($dir, $filename, ['disk' => 'local']);
-    $paperdetails->paperpdf = $filename;
+    
+    //同じ論文名があるかどうか確認
+    $exists = false;
+    $items = Paperbasics::select('paperid')->where('id', '=', Auth::id())->get();
+    foreach ( $items as $item ) {
+      $exists = Paperdetail::where([
+            ['paperid', '=', $item['paperid']],
+            ['papername', '=', $request->papername]
+      ])->exists();
+      if($exists){                               //同じ論文があったとき
+        break;
+      }
+    }
 
-    $paperdetails->save();
+    if(!$exists){
+      $paperbasic = new Paperbasics();
+      // $paperbasic->paperid;    bigincrements
+      $paperbasic->id = Auth::id();
+      $paperbasic->updatetime = now();
+      $paperbasic->regittime = now();
+      $paperbasic->save();
+      $paperdetails = new Paperdetail();
+      $paperdetails->papername = $request->papername;
+      $paperdetails->author = $request->author;
+      $paperdetails->journal = $request->journal;
+      $paperdetails->yearofpublic = $request->yearofpublic;
+      // PDF 保存
+      // $paperdetails->paperpdf = $request->paperpdf;
+      $file = $request->file('file');
+      $filename = Auth::id() . '_' . $paperbasic->paperid . '_' . $request->papername . '.pdf';
+      $dir = 'public';
+      $file->storeAs($dir, $filename, ['disk' => 'local']);
+      $paperdetails->paperpdf = $filename;
+  
+      $paperdetails->save();
+  
+    }
 
     // dropzpne
     // $file = $request->file('file');
