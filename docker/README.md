@@ -1,3 +1,16 @@
+# ※色々変更したので久しぶりに動かす場合にはこちら
+```
+docker-compose build --no-cache
+docker-compose up -d
+docker-compose exec web bash
+composer install
+php artisan migrate:fresh
+npm install
+npm run dev
+```
+で動くはずです．
+何かエラー出た場合には一度ブラウザのキャッシュを削除してみてください．
+
 # docker 開発環境
 簡易メモ
 
@@ -10,6 +23,7 @@ Laravel + PostgreSQL + pgAdmion4 + Apatch
 [初期設定]
 - web: localhost:8081
 - pgadmin4: localhost:8000
+
 
 ### 参考サイト
 - https://qiita.com/sakeafterbeer/items/56cea7e981dacdfc686f 
@@ -30,7 +44,7 @@ docker-compose exec コンテナ名 bash
 docker-compose down
 ```
 
-### Dockerfile や ビルドディレクトリの内容を変更したい場合
+### Dockerfile や ビルドディレクトリの内容を変更した場合
 ```
 docker-compose build --no-cache
 ```
@@ -50,6 +64,7 @@ npm run dev
 ```
 開発時は npm run watch の方が便利
 （※動かない場合は npm run watch-poll）
+
 
 エラー時
 ```

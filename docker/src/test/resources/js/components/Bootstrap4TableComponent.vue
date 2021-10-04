@@ -1,10 +1,14 @@
 <template>
     <div>
-        <!-- <div>
-            <a :href="'/paper_add'" class="btn-register">+ 　新規登録　</a>
-        </div>
-        <div>
-            <input type="submit" value="登録論文削除" class="btn-delete" form="delete">
+        <!-- <div class="col-md-6 input-group vbt-global-search">
+            <div data-v-46173776 class="vbt-table-wrapper table-responsive">
+                <div class="form-group has-clear-right">
+                    <a :href="'/paper_add'" class="btn-register">+ 　新規登録　</a>
+                </div>
+                <div class="form-group has-clear-right">
+                    <input type="submit" value="登録論文削除" class="btn-delete" @click="on-all-select-rows">
+                </div>
+            </div>
         </div> -->
         <vue-bootstrap4-table
             :rows="rows"
@@ -92,7 +96,16 @@ export default {
                     }
                 }
             ],
-            actions: [],
+            // @deletePapers="deletePapers"
+            actions: [
+            //     {
+            //         btn_text: "Delete",
+            //         event_name: "deletePapers",
+            //         event_payload: {
+            //             msg: "message"
+            //         }
+            //     }
+            ],
 
             classes: {
                 // tableWrapper: "outer-table-div-class wrapper-class-two",
@@ -139,7 +152,12 @@ export default {
                 per_page: 10,
                 page: 1
             },
-            total_rows: 0
+            total_rows: 0,
+
+            // 選択した論文
+            selected: {
+                selected_items: []
+            }
         };
     },
     methods: {
@@ -175,7 +193,9 @@ export default {
 
         formatDate (date) {
             return moment(date).utc().format('YYYY/MM/DD HH:mm:SS')
-        }
+        },
+
+
     },
     components: {
         VueBootstrap4Table

@@ -63,8 +63,8 @@ services:
     volumes:
         - ./docker/pgadmin4:/var/lib/pgadmin
     environment: # Set the login information of pgAdmin 4.
-        PGADMIN_DEFAULT_EMAIL: dbuser
-        PGADMIN_DEFAULT_PASSWORD: ex2021test
+        PGADMIN_DEFAULT_EMAIL: root
+        PGADMIN_DEFAULT_PASSWORD: root
     hostname: pgadmin4
     container_name: pgadmin4
     depends_on:

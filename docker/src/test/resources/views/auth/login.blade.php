@@ -24,7 +24,6 @@
     </p>
   </div>
 
-  <!-- <div class="card-header">{{ __('Login') }}</div> -->
   <form method="POST" action="{{ route('login') }}">
     @csrf
     <div class="center">

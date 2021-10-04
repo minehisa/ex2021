@@ -33,6 +33,7 @@ Dropzone 用の設定
 
 require('./bootstrap');
 
+/*
 window.Dropzone = require('dropzone');
 
 $(function () {
@@ -41,6 +42,7 @@ $(function () {
         url: "/paper_add"
     });
 });
+*/
 
  Vue.config.devtools = true;
 
