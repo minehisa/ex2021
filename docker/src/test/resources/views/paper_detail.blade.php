@@ -55,8 +55,9 @@
       PDFの指定を動的にする必要あり
     -->
   <div class="show-pdf">
-    <iframe src="storage/6_134_tete.pdf')" width="100%" height="500px">
-      <p><b>表示されない時の表示</b>: <a href="storage/6_134_tete.pdf">PDF をダウンロード</a>.</p>
+    <iframe src="{{ asset('storage/pdf/' . $data->paperpdf) }}" width="100%" height="500px">
+    <!-- pdfがないときは404 not found　が表示
+    -->
     </iframe>
   </div>
 
