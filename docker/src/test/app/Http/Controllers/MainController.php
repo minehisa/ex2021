@@ -71,7 +71,7 @@ class MainController extends Controller
       // $paperdetails->paperpdf = $request->paperpdf;
       $file = $request->file('file');
       $filename = Auth::id() . '_' . $paperbasic->paperid . '_' . $request->papername . '.pdf';
-      $dir = 'public';
+      $dir = 'public/pdf/';
       $file->storeAs($dir, $filename, ['disk' => 'local']);
       $paperdetails->paperpdf = $filename;
   
