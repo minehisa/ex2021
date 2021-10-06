@@ -11,6 +11,19 @@ npm run dev
 で動くはずです．
 何かエラー出た場合には一度ブラウザのキャッシュを削除してみてください．
 
+
+# ※10/7追記
+public/storageからstorage/app/publicへシンボリックリンクを張る必要があるため，
+以下のように設定してください。
+```
+docker-compose exec web bash
+php artisan storage:link
+```
+詳細は参考サイトで確認してください。
+
+### 参考サイト
+- https://tektektech.com/laravel-storage-app-public/
+
 # docker 開発環境
 簡易メモ
 
@@ -26,20 +39,20 @@ Laravel + PostgreSQL + pgAdmion4 + Apatch
 
 
 ### 参考サイト
-- https://qiita.com/sakeafterbeer/items/56cea7e981dacdfc686f 
+- https://qiita.com/sakeafterbeer/items/56cea7e981dacdfc686f
 
-### コンテナ生成・起動 
+### コンテナ生成・起動
  docker-compose.yml のディレクトリで
 ```
 docker-compose up -d
 ```
 
-### コンテナ内に入るとき 
+### コンテナ内に入るとき
 ```
 docker-compose exec コンテナ名 bash
 ```
 
-### コンテナ停止 
+### コンテナ停止
 ```
 docker-compose down
 ```
@@ -106,7 +119,7 @@ php artisan db:seed
     docker-compose exec web bash
     php artisan make:controller --resource nameController
     ```
-    
+
 3. name,blade.phpの作成
     resource/views以下に記載
 
