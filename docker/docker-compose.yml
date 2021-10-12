@@ -3,7 +3,7 @@ version: '3'
 volumes:
   db-data:
   bootstrap_cache:
-  storage:
+  # storage:
   node_modules:
   vendor:
 
@@ -42,7 +42,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:10.8
+    image: postgres:14.0
     ports:
       - 5432:5432
     volumes:
@@ -57,7 +57,7 @@ services:
     restart: always
 
   pgadmin4:
-    image: dpage/pgadmin4:4.2
+    image: dpage/pgadmin4:6
     ports:
         - 8000:80
     volumes:
@@ -65,6 +65,7 @@ services:
     environment: # Set the login information of pgAdmin 4.
         PGADMIN_DEFAULT_EMAIL: root
         PGADMIN_DEFAULT_PASSWORD: root
+        PGADMIN_DEFAULT_EMAIL: admin@abcde.com
     hostname: pgadmin4
     container_name: pgadmin4
     depends_on:
