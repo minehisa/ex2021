@@ -8,6 +8,7 @@
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/icon.js') }}"></script>
   <title>Main画面</title>
 </head>
 
@@ -25,7 +26,8 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
       @csrf
     </form>
-    <span class="icon-user"></span>
+    <span class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">{{substr($email,0,1)}}</span>
+    <p class="name-user">{{mb_strstr($email,'@',true)}}@******</p>
   </div>
   <h1 class="page-title">Main画面</h1>
 

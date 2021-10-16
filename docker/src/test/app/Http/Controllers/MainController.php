@@ -12,7 +12,23 @@ class MainController extends Controller
 {
   public function index()
   {
-    return view('main');
+    // user icon 用 --------------
+    $user_data = Auth::user();
+    $email = $user_data->email;
+    $number = 0;
+    foreach(str_split($email) as $value){
+      $number = $number + ord($value);
+    }
+    $colorBackground =  ($number * $number) % 360;
+    if($colorBackground <= 180){
+      $colorChar = "black";
+    }
+    else{
+      $colorChar = "white";
+    }
+    // ------------------------------
+
+    return view('main',compact("email", "colorBackground", "colorChar"));
   }
 
   // 論文追加
@@ -83,6 +99,7 @@ class MainController extends Controller
     // $file = $request->file('file');
     // $filename = $file->getClientOriginalName();
     // $file->move(public_path('pdf'), $filename);
+
     return view('paper_add');
   }
 
@@ -91,6 +108,23 @@ class MainController extends Controller
   public function detail($paperid)
   {
     $data = Paperdetail::find($paperid);
-    return view('paper_detail', compact("data"));
+
+    // user icon 用 --------------
+    $user_data = Auth::user();
+    $email = $user_data->email;
+    $number = 0;
+    foreach(str_split($email) as $value){
+      $number = $number + ord($value);
+    }
+    $colorBackground =  ($number * $number) % 360;
+    if($colorBackground <= 180){
+      $colorChar = "black";
+    }
+    else{
+      $colorChar = "white";
+    }
+    // ------------------------------
+
+    return view('paper_detail', compact("data", "email", "colorBackground", "colorChar"));
   }
 }

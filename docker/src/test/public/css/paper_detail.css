@@ -8,8 +8,8 @@
     text-align: center;
     width: 100%;
     height: 50px;
-    padding-top: 30px;
     position: fixed;
+    z-index: 3;
 }
 .detail{
     text-align: center;
@@ -17,7 +17,7 @@
     position: relative;
     width: 100%;
     height: 80px;
-    top: 50px;
+    top: 80px;
     z-index: 2;
 }
 .show-pdf{
@@ -26,10 +26,11 @@
     height: auto;
     z-index: 1;
     bottom: 0%;
+    top: 70px;
 }
 
 /* ヘッダーのボタン設定 */
-/* 編集＆BIBTEX形式ボタンの設定 */
+/* 編集ボタンの設定 */
 .btn-editbib {
     display: inline-block;
     width: 180px;
@@ -44,9 +45,11 @@
     text-decoration: none;
     font-weight: bold;
     border: 2px solid #d3d3d3;
-    position: relative;
+    position: absolute;
     overflow: hidden;
     z-index: 1;
+    left: 5px;
+    top: 5px;
 }
 .btn-editbib:after {
     width: 100%;
@@ -69,6 +72,52 @@
     opacity: 1;
 }
 .btn-editbib:active:after {
+    height: 340%;
+    opacity: 1;
+}
+
+/* BIBTEX形式ボタンの設定 */
+.btn-bibtex {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #d3d3d3;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    left: 200px;
+    top: 5px;
+}
+.btn-bibtex:after {
+    width: 100%;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+}
+.btn-bibtex:hover {
+    color: #000000;
+}
+.btn-bibtex:hover:after {
+    height: 240%;
+    opacity: 1;
+}
+.btn-bibtex:active:after {
     height: 340%;
     opacity: 1;
 }
@@ -133,18 +182,51 @@
 /* ユーザーアイコン設定 */
 .icon-user{
     display: inline-block;
-	width: 40px;
-	height: 40px;
+    width: 40px;
+    height: 40px;
     position: absolute;
     right: 25px;
     top: 5px;
-	background: pink;
-	-moz-border-radius: 40px;
-	-webkit-border-radius: 40px;
-	-o-border-radius: 40px;
-	-ms-border-radius: 40px; 
-	border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+    -ms-border-radius: 40px; 
+    border-radius: 40px;
     border-color: black;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 200%;
+    font-weight: 900;
+    cursor: pointer;
+    cursor: hand;
+}
+.name-user {
+    opacity: 0;
+    position: absolute;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(153, 153, 153, 0.50);
+    max-width: calc(100%-200px);
+    right: 25px;
+    top: 100%;
+    margin-top: 12px;
+    font-size: 20px;
+    transition: 1s;
+}
+  
+.name-user:after {
+    border-bottom: 12px solid rgba(153, 153, 153, 0.50);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: -12px; 
+    right: 5%;
+    content: "";
+    position: absolute;
+}
+span.icon-user:hover + p.name-user {
+    opacity: 1;
+    transition: .5s;
 }
 
 /* 論文名の設定 */

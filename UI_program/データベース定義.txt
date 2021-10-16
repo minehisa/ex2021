@@ -1,7 +1,7 @@
 //テーブルusertbの定義
 CREATE TABLE usertb(
     id serial,
-    address varchar(50),
+    email varchar(50),
     password varchar(520),
     primary key (id)
 );
@@ -11,7 +11,7 @@ CREATE TABLE paperbasic(
     id integer,
     papername varchar(50),
     updatetime timestamp,
-    regitime timestamp,
+    regittime timestamp,
     primary key (paperid),
     foreign key (id) references usertb(id)
 );
