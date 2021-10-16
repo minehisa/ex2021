@@ -32,7 +32,7 @@ Dropzone 用の設定
 */
 
 require('./bootstrap');
-
+// require("./fontawesome");
 /*
 window.Dropzone = require('dropzone');
 

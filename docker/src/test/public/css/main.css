@@ -1,21 +1,13 @@
-.header{
-  display: flex;
-  text-align: center;
-  width: 100%;
-  height: 50px;
-  padding-top: 30px;
-  position: fixed;
-}
-
-/* ヘッダーのボタン設定 */
 /* タイトル設定 */
 .page-title{
-  text-align: center;
-  font-size: 2.0em;
-  margin: 0 auto;
-  margin-top: 10px;
-  max-width: 500px;
-  border: solid 3px #000;
+    text-align: center;
+    font-size: 2.0em;
+    margin: 0 auto;
+    /* margin-top: 10px; */
+    /* width: 50%; */
+    max-width: 500px;
+    min-width: 100px;
+    border: solid 3px #000;
 }
 /* ログアウトボタン設定 */
 .btn-logout{
@@ -40,14 +32,15 @@
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
   -o-border-radius: 40px;
-  -ms-border-radius: 40px; 
+  -ms-border-radius: 40px;
   border-radius: 40px;
   border-color: black;
 }
 
 .container {
   font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
-  text-align: center;
+  /* text-align: center; */
+  margin: 0 auto;
   padding-top: 40px;
 }
 
