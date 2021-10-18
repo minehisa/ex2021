@@ -191,6 +191,7 @@
     -webkit-border-radius: 40px;
     -o-border-radius: 40px;
     -ms-border-radius: 40px;
+
     border-radius: 40px;
     border-color: black;
     margin: 0 auto;
@@ -219,7 +220,7 @@
     border-bottom: 12px solid rgba(153, 153, 153, 0.50);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    top: -12px;
+    top: -12px; 
     right: 5%;
     content: "";
     position: absolute;

@@ -10,6 +10,7 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="{{ asset('js/icon.js') }}"></script>
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+
   <title>Main画面</title>
 </head>
 
@@ -19,6 +20,7 @@
 </form>
 
 <body>
+
   <!-- grid -->
   <nav>
     <div class="container-fluid">
