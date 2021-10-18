@@ -39,6 +39,7 @@ class PaperController extends Controller
 
   public function delete(Request $request)
   {
+    // データベースから削除する処理
   }
 
   /**

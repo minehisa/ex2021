@@ -25,6 +25,7 @@
     <span class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">{{substr($email,0,1)}}</span>
       <p class="name-user">{{mb_strstr($email,'@',true)}}@******</p>
   </div> 
+
   <div class="detail">
     <!-- 下部にタイトルを動的に適用 -->
     <div class="paper-name">{{$data->papername}}</div>
@@ -58,7 +59,7 @@
     -->
   <div class="show-pdf">
     <iframe src="{{ asset('storage/pdf/' . $data->paperpdf) }}" width="100%" height="500px">
-    <!-- pdfがないときは404 not found　が表示
+      <!-- pdfがないときは404 not found　が表示
     -->
     </iframe>
   </div>

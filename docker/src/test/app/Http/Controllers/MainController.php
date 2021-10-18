@@ -12,10 +12,14 @@ class MainController extends Controller
 {
   public function index()
   {
+
+    // return view('main');
+
     // user icon 用 --------------
     $user_data = Auth::user();
     $email = $user_data->email;
     $number = 0;
+
     foreach(str_split($email) as $value){
       $number = $number + ord($value);
     }
@@ -24,11 +28,14 @@ class MainController extends Controller
       $colorChar = "black";
     }
     else{
+
       $colorChar = "white";
     }
     // ------------------------------
 
+
     return view('main',compact("email", "colorBackground", "colorChar"));
+
   }
 
   // 論文追加
@@ -46,7 +53,10 @@ class MainController extends Controller
         'author' => 'required',
         'journal' => 'required',
         'yearofpublic' => 'required',
-        'file' => 'required'
+        'file' => 'required',
+        // 'volume' => ,
+        // 'pages' => ,
+        // 'publisher' =>,
       ],
       [
         'papername.required' => '必須項目です．',
@@ -57,21 +67,21 @@ class MainController extends Controller
       ]
     );
 
-    
+
     //同じ論文名があるかどうか確認
     $exists = false;
     $items = Paperbasics::select('paperid')->where('id', '=', Auth::id())->get();
-    foreach ( $items as $item ) {
+    foreach ($items as $item) {
       $exists = Paperdetail::where([
-            ['paperid', '=', $item['paperid']],
-            ['papername', '=', $request->papername]
+        ['paperid', '=', $item['paperid']],
+        ['papername', '=', $request->papername]
       ])->exists();
-      if($exists){                               //同じ論文があったとき
+      if ($exists) {                               //同じ論文があったとき
         break;
       }
     }
 
-    if(!$exists){
+    if (!$exists) {
       $paperbasic = new Paperbasics();
       // $paperbasic->paperid;    bigincrements
       $paperbasic->id = Auth::id();
@@ -90,9 +100,8 @@ class MainController extends Controller
       $dir = 'public/pdf/';
       $file->storeAs($dir, $filename, ['disk' => 'local']);
       $paperdetails->paperpdf = $filename;
-  
+
       $paperdetails->save();
-  
     }
 
     // dropzpne
@@ -109,10 +118,16 @@ class MainController extends Controller
   {
     $data = Paperdetail::find($paperid);
 
+    // return view('paper_detail', compact("data"));
+
+
     // user icon 用 --------------
     $user_data = Auth::user();
     $email = $user_data->email;
     $number = 0;
+
+
+
     foreach(str_split($email) as $value){
       $number = $number + ord($value);
     }
@@ -121,6 +136,7 @@ class MainController extends Controller
       $colorChar = "black";
     }
     else{
+
       $colorChar = "white";
     }
     // ------------------------------

@@ -1,8 +1,10 @@
 
 docker/src/test/storage/framework/
-docker/docker/pgadmin4/pgadmin4.db
 docker/docker/pgadmin4/sessions/
 docker/docker/pgadmin4/pgadmin4.db
 docker/src/test/storage/logs/laravel.log
 docker/docker/pgadmin4/pgadmin4.db
-docker/docker/pgadmin4/sessions/410225c2-41a0-4790-a92b-575c8ea9b778
+docker/src/test/.env
+docker/src/test/public/fonts/
+docker/.vscode
+docker/src/test/public/storage

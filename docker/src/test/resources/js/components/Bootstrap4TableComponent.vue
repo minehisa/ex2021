@@ -98,13 +98,13 @@ export default {
             ],
             // @deletePapers="deletePapers"
             actions: [
-            //     {
-            //         btn_text: "Delete",
-            //         event_name: "deletePapers",
-            //         event_payload: {
-            //             msg: "message"
-            //         }
-            //     }
+                // {
+                //     btn_text: "Delete",
+                //     event_name: "deletePapers",
+                //     event_payload: {
+                //         msg: "message"
+                //     }
+                // }
             ],
 
             classes: {

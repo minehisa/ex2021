@@ -15,6 +15,9 @@ class Paperdetail extends Model
     'papername',
     'journal',
     'yearofpublic',
+    'volume',
+    'pages',
+    'publisher',
     'paperpdf',
   ];
 
@@ -26,6 +29,6 @@ class Paperdetail extends Model
   // paperdetails から paperbasic への参照
   public function paperdetails_paperbasic()
   {
-    return $this->belongsTo('App\Models\Paperbasics', 'paperid','paperid');
+    return $this->belongsTo('App\Models\Paperbasics', 'paperid', 'paperid');
   }
 }
