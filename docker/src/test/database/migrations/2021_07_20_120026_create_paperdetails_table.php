@@ -24,6 +24,9 @@ class CreatePaperdetailsTable extends Migration
       $table->string('author', 50);
       $table->string('journal', 50);
       $table->string('yearofpublic', 50);
+      $table->string('volume', 10);
+      $table->string('pages', 10);
+      $table->string('publisher', 50);
       // $table->string('paperpdf');
       $table->string('paperpdf');
 

@@ -46,7 +46,10 @@ class MainController extends Controller
         'author' => 'required',
         'journal' => 'required',
         'yearofpublic' => 'required',
-        'file' => 'required'
+        'file' => 'required',
+        // 'volume' => ,
+        // 'pages' => ,
+        // 'publisher' =>,
       ],
       [
         'papername.required' => '必須項目です．',
