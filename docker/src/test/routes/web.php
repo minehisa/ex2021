@@ -24,21 +24,23 @@ Route::view('/', 'Top');
 
 
 /* vendor/laravel/ui/src/AuthRouteMethods.php参照 */
-/*
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+/* 認証 */
+Auth::routes();
+// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::post('login', 'Auth\LoginController@login');
+// Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('register', 'Auth\RegisterController@register');
 
-Route::get('password/confirm', 'Auth\ConfirmPasswordController@confirm')->name('password.confirm');
+// Route::get('password/confirm', 'Auth\ConfirmPasswordController@confirm')->name('password.confirm');
 
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-*/
+// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// Route::get('password/passward_reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
 
 /* ログイン時のみ遷移 */
 Route::group(['middleware' => 'auth'], function () {
@@ -51,9 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/paper_detail/{paperid}', 'MainController@detail')->name('paper_detail');
 });
 
+
 Route::get('/paper_detail', 'MainController@detail')->name('paper_detail');
-/* 認証 */
-Auth::routes();
+
 
 Route::get('/Top', 'HomeController@index')->name('Top');
 // Route::get('/home', 'HomeController@index')->name('home');
