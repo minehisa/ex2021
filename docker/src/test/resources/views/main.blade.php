@@ -8,6 +8,7 @@
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/icon.js') }}"></script>
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <title>Main画面</title>
 </head>
@@ -23,19 +24,21 @@
     <div class="container-fluid">
       <div class="row mt-5">
         <div class="col-3">
+        </div>
+        <div class="col-6">
+          <h1 class="page-title">Main画面</h1>
+        </div>
+        <div class="col-3 text-center text-lg-start">
           <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             {{ __('ログアウト') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
           </form>
-          <span class="icon-user"></span>
-        </div>
-        <div class="col-6">
-          <h1 class="page-title">Main画面</h1>
-        </div>
-        <div class="col-3 text-center text-lg-start">
-
+          <!-- <span class="icon-user"></span> -->
+          <span class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">{{substr($email,0,1)}}</span>
+          <p class="name-user">{{mb_strstr($email,'@',true)}}@******</p>
+          <p class="name-user">{{mb_strstr($email,'@',true)}}@******</p>
         </div>
       </div>
     </div>
