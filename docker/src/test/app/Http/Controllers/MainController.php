@@ -49,31 +49,40 @@ class MainController extends Controller
 
     $request->validate(
       [
-        'papername' => 'required',
-        'author' => 'required',
-        'journal' => 'required',
-        'yearofpublic' => 'required',
-        'file' => 'required',
-        // 'volume' => ,
-        // 'pages' => ,
-        // 'publisher' =>,
+        'papername' => 'required|between:1,250',
+        'author' => 'required|between:1,250',
+        'journal' => 'required|between:1,100',
+        'yearofpublic' => 'required|integer|between:0,2100',
+        'file' => 'required|mimes:pdf',
+        'volume' => 'nullable|integer|between:0,2147483647',
+        'pages' => 'nullable|max:10',
+        'publisher' => 'nullable|max:100',
       ],
       [
         'papername.required' => '必須項目です．',
+        'papername.between' => '1から100文字以内で入力してください．',
         'author.required' => '必須項目です．',
+        'author.between' => '1から250文字以内で入力してください．',
         'journal.required' => '必須項目です．',
+        'journal.between' => '1から100文字以内で入力してください．',
         'yearofpublic.required' => '必須項目です．',
-        'file.required' => '必須項目です．'
+        'yearofpublic.integer' => '半角で入力してください．',
+        'yearofpublic.between' => '0から2100の範囲で入力してください',
+        'file.required' => '必須項目です．',
+        'file.mimes' => 'pdfを指定してください．',
+        'volume.integer' => '半角で入力してください．',
+        'volume.between' => '0から2147483647の範囲で入力してください．',
+        'pages.max' => '0から10文字以内で入力してください．',
+        'publisher.max' => '0から100文字以内で入力してください．',
       ]
     );
-
 
     //同じ論文名があるかどうか確認
     $exists = false;
     $items = Paperbasics::select('paperid')->where('id', '=', Auth::id())->get();
     foreach ($items as $item) {
       $exists = Paperdetail::where([
-        ['paperid', '=', $item['paperid']],
+        ['paperid', '=', $item->paperid],
         ['papername', '=', $request->papername]
       ])->exists();
       if ($exists) {                               //同じ論文があったとき
@@ -93,8 +102,11 @@ class MainController extends Controller
       $paperdetails->author = $request->author;
       $paperdetails->journal = $request->journal;
       $paperdetails->yearofpublic = $request->yearofpublic;
+      $paperdetails->volume = $request->volume;
+      $paperdetails->pages = $request->pages;
+      $paperdetails->publisher = $request->publisher;
       // PDF 保存
-      // $paperdetails->paperpdf = $request->paperpdf;
+     // $paperdetails->paperpdf = $request->paperpdf;
       $file = $request->file('file');
       $filename = Auth::id() . '_' . $paperbasic->paperid . '_' . $request->papername . '.pdf';
       $dir = 'public/pdf/';

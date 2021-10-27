@@ -50,6 +50,18 @@
           <th>掲載年</th>
           <td>{{$data->yearofpublic}}</td>
         </tr>
+        <tr>
+          <th>掲載号</th>
+          <td>{{$data->volume}}</td>
+        </tr>
+        <tr>
+          <th>掲載ページ</th>
+          <td>{{$data->pages}}</td>
+        </tr>
+        <tr>
+          <th>出版社</th>
+          <td>{{$data->publisher}}</td>
+        </tr>
       </table>
     </div>
   </div>

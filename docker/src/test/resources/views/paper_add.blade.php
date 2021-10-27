@@ -37,32 +37,50 @@
     <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data">
       @csrf
       <br>
-      <p>論文名:
+      <p>論文名(必須):
         @if($errors->has('papername'))
         {{ $errors->first('papername') }}<br>
         @endif
         <input type="text" name="papername" size="50" form="my-awesome-dropzone">
       </p>
-      <p>著者名:
+      <p>著者名(必須):
         @if($errors->has('author'))
         {{ $errors->first('author') }}<br>
         @endif
         <input type="text" name="author" size="50" form="my-awesome-dropzone">
       </p>
-      <p>雑誌名:
+      <p>雑誌名(必須):
         @if($errors->has('journal'))
         {{ $errors->first('journal') }}<br>
         @endif
         <input type="text" name="journal" size="50" form="my-awesome-dropzone">
       </p>
-      <p>掲載年:
+      <p>掲載年(必須):
         @if($errors->has('yearofpublic'))
         {{ $errors->first('yearofpublic') }}<br>
         @endif
         <input type="text" name="yearofpublic" size="50" form="my-awesome-dropzone">
       </p>
+      <p>雑誌号(任意):
+        @if($errors->has('volume'))
+        {{ $errors->first('volume') }}<br>
+        @endif
+        <input type="text" name="volume" size="50" form="my-awesome-dropzone">
+      </p>
+      <p>ページ(任意):
+        @if($errors->has('pages'))
+        {{ $errors->first('pages') }}<br>
+        @endif
+        <input type="text" name="pages" size="50" form="my-awesome-dropzone">
+      </p>
+      <p>出版社(任意):
+        @if($errors->has('publisher'))
+        {{ $errors->first('publisher') }}<br>
+        @endif
+        <input type="text" name="publisher" size="50" form="my-awesome-dropzone">
+      </p>
       <br>
-      <p>PDFをドラッグ&ドロップ</p>
+      <p>PDFをドラッグ&ドロップ(必須)</p>
 
       <!--
           とりあえず dropzone.jsを採用（dropzone.css、dropzone.jsを使用）

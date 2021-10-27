@@ -20,15 +20,15 @@ class CreatePaperdetailsTable extends Migration
       // $table->foreignId('paperid')->constrained('paperbasics');
       //   $table->unsignedbigInteger('paperid')->unique();
       $table->bigIncrements('paperid');
-      $table->string('papername', 50);
-      $table->string('author', 50);
-      $table->string('journal', 50);
-      $table->string('yearofpublic', 50);
-      $table->string('volume', 10);
-      $table->string('pages', 10);
-      $table->string('publisher', 50);
+      $table->string('papername', 100);
+      $table->string('author', 250);
+      $table->string('journal', 100);
+      $table->integer('yearofpublic');
+      $table->integer('volume')->nullable();
+      $table->string('pages', 10)->nullable();
+      $table->string('publisher', 50)->nullable();
       // $table->string('paperpdf');
-      $table->string('paperpdf');
+      $table->string('paperpdf', 200);
 
       // PK 設定
       // $table->dropPrimary();
