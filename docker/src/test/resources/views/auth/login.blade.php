@@ -34,7 +34,7 @@
       <a href="{{ route('register') }}">新規登録</a>
     </p>
     <p class="col-md-6 pass-text">
-      <a href="{{ route('password.request') }}" target="_blank">パスワードを忘れた方</a>
+      <a href="{{ route('password.request') }}" target="_blank" rel="noopener noreferrer">パスワードを忘れた方</a>
     </p>
 
     <form method="POST" action="{{ route('login') }}">

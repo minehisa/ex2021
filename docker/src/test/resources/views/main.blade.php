@@ -6,9 +6,9 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="{{ asset('js/icon.js') }}"></script>
+  <!-- <script src="{{ asset('js/icon.js') }}"></script> -->
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
   <title>Main画面</title>
@@ -46,21 +46,24 @@
     </div>
   </nav>
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="text-left">
       <a href="{{ url('/paper_add') }}" class="btn-register">+ 新規登録</a>
     </div>
     <div class="text-left">
-      <a href="" class=" btn-delete">- 登録論文削除</a>
-      <!-- <input type="submit" value="登録論文削除" class="btn-delete" form="delete"> -->
-      <!-- <button type="button" class="btn-delete">論文削除</button> -->
+      <a v-on:click="deletePapers" class=" btn-delete">- 登録論文削除</a> -->
+  <!-- <input type="submit" value="登録論文削除" class="btn-delete" form="delete"> -->
+  <!-- <button v-on:click="deletePapers" type="button" class="btn-delete">論文削除</button>
     </div>
 
-  </div>
+  </div> -->
 
   <div class="container" id="app">
-    <vue-bootstrap4-table />
+    <vue-bootstrap4-table></vue-bootstrap4-table>
+    <!-- <vue-bootstrap4-table /> -->
   </div>
+
+  <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 
 </body>
 

@@ -8,6 +8,7 @@ use App\Models\Paperdetail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PaperController extends Controller
 {
@@ -40,7 +41,40 @@ class PaperController extends Controller
   public function delete(Request $request)
   {
     // データベースから削除する処理
+    //通信がajaxかチェック
+    if (!$request->ajax()) {
+      abort(404);
+    }
+
+    //受信パラメータが存在するかチェック
+    // if (empty($this->request->data['hogege']) || empty($this->request->data['fugaga'])) {
+    //   abort(404);
+    // }
+
+    //受信パラメータを格納
+    $array = $request->all();
+    // $arr = json_decode($array, true);
+    // $papers_json = $request->input('ids');
+
+    if (empty($array)) {
+      abort(404);
+    }
+
+    // $papers = array_column($array, 'paperid');
+
+    foreach ($array as $index => $paper_id) {
+      // User::find(Auth::id())->paperbasic();
+      Auth::user()->paperbasic()->where('paperid', $paper_id)->delete();
+      clock($paper_id);
+    }
+
+    //結果を返却
+    // $result['status'] = "ok";
+    // $result['msg'] = "無事受信完了しました！";
+    // $this->set(compact('result'));
+    // $this->set('_serialize', ['result']);
   }
+
 
   /**
    * Store a newly created resource in storage.
