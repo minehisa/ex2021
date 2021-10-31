@@ -65,7 +65,7 @@ class PaperController extends Controller
     foreach ($array as $index => $paper_id) {
       // User::find(Auth::id())->paperbasic();
       Auth::user()->paperbasic()->where('paperid', $paper_id)->delete();
-      clock($paper_id);
+      //clock($paper_id);
     }
 
     //結果を返却
