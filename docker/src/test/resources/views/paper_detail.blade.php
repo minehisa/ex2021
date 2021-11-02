@@ -31,7 +31,8 @@
     </button>
     <div class="dropdown-body">
       <ul class="dropdown-list">
-      <li class="dropdown-item"><a>ここに</a></li>
+        <li class="dropdown-username"><a>{{mb_strstr($email,'@',true)}}@******</a></li>
+        <li><hr style="border-top: 10px double #000;"/></li>
         <li class="dropdown-item"><a>めにゅーを</a></li>
         <li class="dropdown-item"><a>なにか</a></li>
         <li class="dropdown-item">
