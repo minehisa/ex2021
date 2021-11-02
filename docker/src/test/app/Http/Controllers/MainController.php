@@ -41,7 +41,24 @@ class MainController extends Controller
   // 論文追加
   public function add_paper()
   {
-    return view('paper_add');
+    // user icon 用 --------------
+    $user_data = Auth::user();
+    $email = $user_data->email;
+    $number = 0;
+
+    foreach(str_split($email) as $value){
+      $number = $number + ord($value);
+    }
+    $colorBackground =  ($number * $number) % 360;
+    if($colorBackground <= 180){
+      $colorChar = "black";
+    }
+    else{
+
+      $colorChar = "white";
+    }
+    // ------------------------------
+    return view('paper_add',compact("email", "colorBackground", "colorChar"));
   }
   public function upload_paper(Request $request)
   {
