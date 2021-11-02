@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
+  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}"> -->
 
   <!-- CSRF Token -->
@@ -14,27 +15,44 @@
   <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
   <!-- <script type="module">
         @yield('script')
-    </script> -->
+  </script> -->
+  <script src="{{ asset('js/icon.js') }}"></script>
 
   <!-- 下部にタイトルを動的に適用 -->
   <title>文献追加</title>
 </head>
-
 <body>
   <div class="header">
     <h1 class="page-title">論文追加</h1>
     <a href="{{ url('/main') }}" class="btn-back">戻る</a>
-    <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
+    <!--<a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">
       {{ __('ログアウト') }}
     </a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
       @csrf
-    </form>
-    <span class="icon-user"></span>
+    </form>-->
+    <button id="icon-user" class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">
+      {{substr($email,0,1)}}
+    </button>
+    <div class="dropdown-body">
+      <ul class="dropdown-list">
+      <li class="dropdown-item"><a>ここに</a></li>
+        <li class="dropdown-item"><a>めにゅーを</a></li>
+        <li class="dropdown-item"><a>なにか</a></li>
+        <li class="dropdown-item">
+          <a class="btn-logout-usermanu" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            {{ __('ログアウト') }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+      @csrf
+    </form> 
   </div>
-  <div class="add-form">
-    <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data">
+  <div class="add-form-body">
+    <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data" class="add-form">
       @csrf
       <br>
       <p>論文名(必須):
@@ -98,7 +116,6 @@
       @endif
       <input type="file" name="file" form="my-awesome-dropzone" accept=".pdf">
       <!-- <input type="text" name="paperpdf" size="50" form="my-awesome-dropzone"> -->
-
       <p>
         <input type="submit" value="追加" class="btn-submit" form="my-awesome-dropzone">
       </p>

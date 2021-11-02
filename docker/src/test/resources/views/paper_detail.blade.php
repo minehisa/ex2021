@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
+  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('/css/paper_detail.css') }}">
+  <script src="{{ asset('js/icon.js') }}"></script>
   <!-- 下部にタイトルを動的に適用 -->
   <title>book1</title>
 </head>
@@ -15,15 +17,33 @@
     <a href="#" class="btn-editbib">編集</a>
     <a href="#" class="btn-bibtex">BIB TEX形式</a>
     <a href="{{ url('/main') }}" class="btn-back">戻る</a>
-    <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
+    <!--<a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
       document.getElementById('logout-form').submit();">
       {{ __('ログアウト') }}
     </a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
       @csrf
+    </form>-->
+    <!--<span class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">{{substr($email,0,1)}}</span>
+    <p class="name-user">{{mb_strstr($email,'@',true)}}@******</p>-->
+    <button id="icon-user" class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">
+      {{substr($email,0,1)}}
+    </button>
+    <div class="dropdown-body">
+      <ul class="dropdown-list">
+      <li class="dropdown-item"><a>ここに</a></li>
+        <li class="dropdown-item"><a>めにゅーを</a></li>
+        <li class="dropdown-item"><a>なにか</a></li>
+        <li class="dropdown-item">
+          <a class="btn-logout-usermanu" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            {{ __('ログアウト') }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+      @csrf
     </form>
-    <span class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">{{substr($email,0,1)}}</span>
-      <p class="name-user">{{mb_strstr($email,'@',true)}}@******</p>
   </div> 
 
   <div class="detail">
@@ -32,7 +52,7 @@
 
     <input id="detail-check1" class="detail-check" type="checkbox">
     <label class="detail-label" for="detail-check1">詳細</label>
-    <div class="detail-content">
+    <div id="detail-content" class="detail-content">
       <table border="1">
         <tr>
           <th>論文名</th>

@@ -138,7 +138,25 @@ class MainController extends Controller
     // $filename = $file->getClientOriginalName();
     // $file->move(public_path('pdf'), $filename);
 
-    return view('paper_add');
+    // user icon 用 --------------
+    $user_data = Auth::user();
+    $email = $user_data->email;
+    $number = 0;
+
+    foreach(str_split($email) as $value){
+      $number = $number + ord($value);
+    }
+    $colorBackground =  ($number * $number) % 360;
+    if($colorBackground <= 180){
+      $colorChar = "black";
+    }
+    else{
+
+      $colorChar = "white";
+    }
+    // ------------------------------
+
+    return view('main', compact("data", "email", "colorBackground", "colorChar"));
   }
 
 

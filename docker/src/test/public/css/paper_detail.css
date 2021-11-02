@@ -10,6 +10,7 @@
     height: 50px;
     position: fixed;
     z-index: 3;
+    margin-top: 5px;
 }
 .detail{
     text-align: center;
@@ -179,6 +180,13 @@
 .btn-logout:hover{
     color: #87cefa;
 }
+.btn-logout-usermanu{
+    display: inline-block;
+    color: #0000ee;
+}
+.btn-logout-usermanu:hover{
+    color: #87cefa;
+}
 /* ユーザーアイコン設定 */
 .icon-user{
     display: inline-block;
@@ -202,6 +210,66 @@
     cursor: pointer;
     cursor: hand;
 }
+/* ユーザーメニューに関する部分-------------------------- */
+.icon-user.is-open::after {
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    cursor: default;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    transition: 3s;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  
+.icon-user.is-open + .dropdown-body {
+    display: block;
+    z-index: 5;
+    transition: 3s;
+}
+
+.dropdown-body {
+    display: none;
+    width: 250px;
+    height: 500px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 25px;
+    top: 60px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 12px;
+    opacity: 1;
+    z-index: 50;
+    box-shadow: 0 2px 6px 2px rgba(60,64,67,0.149), 0 1px 2px 0 rgba(60,64,67,0.302);
+}
+
+.dropdown-list{
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+}
+
+.dropdown-item{
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+/* ----------------------------------------------- */
+
+/*
 .name-user {
     opacity: 0;
     position: absolute;
@@ -229,6 +297,7 @@ span.icon-user:hover + p.name-user {
     opacity: 1;
     transition: .5s;
 }
+*/
 
 /* 論文名の設定 */
 .paper-name{
@@ -318,6 +387,9 @@ th{
 }
 td{
     text-align: center;
+}
+#detail-content table, #detail-content th, #detail-content td {
+    border: 1px solid #000000;
 }
 
 /* PDF表示部の設定 */
