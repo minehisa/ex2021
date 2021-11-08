@@ -20,6 +20,8 @@
       @on-change-query="onChangeQuery"
       @delete-Papers="deletePapers"
       @refresh-data="onRefreshData"
+      @select-labels="selectLabels"
+      :show-loader="showLoader"
       :total-rows="total_rows"
     >
       <template slot="sort-asc-icon">
@@ -63,18 +65,43 @@ export default {
       rows: [],
 
       columns: [
-        // {
-        //     label: "paperid",
-        //     name: "paperid",
-        //     uniqueId : true,
-        // },
         {
           label: "論文名",
           name: "papername",
           sort: true,
           filter: {
-            type: "simple",
-            placeholder: "Enter papername",
+              type: "simple",
+              placeholder: "Enter papername"
+          },
+        },
+        {
+          label: "著者",
+          name: "author",
+          visibility: false,
+          sort: true,
+          filter: {
+              type: "simple",
+              placeholder: "Enter "
+          },
+        },
+        {
+          label: "雑誌名",
+          name: "journal",
+          visibility: false,
+          sort: true,
+          filter: {
+              type: "simple",
+              placeholder: "Enter "
+          },
+        },
+        {
+          label: "掲載年",
+          name: "yearofpublic",
+          visibility: false,
+          sort: true,
+          filter: {
+              type: "simple",
+              placeholder: "Enter "
           },
         },
         {
@@ -83,7 +110,7 @@ export default {
           sort: true,
           filter: {
             type: "simple",
-            placeholder: "Enter updatetime",
+            placeholder: "Enter updatetime"
           },
         },
         {
@@ -92,21 +119,36 @@ export default {
           sort: true,
           filter: {
             type: "simple",
-            placeholder: "Enter regittime",
+            placeholder: "Enter regittime"
           },
         },
       ],
       actions: [
-        // {
-        //     btn_text: "Delete",
-        //     event_name: "delete-Papers",
-        //     classe: "btn-delete",
-        //     // event_payload: {
-        //     //      msg: "message"
-        //     // }
-        // }
+        {
+          btn_text: "著者",
+          event_name: "select-labels",
+          classe: "btn btn-primary",
+          event_payload: {
+            msg: "author"
+          }
+        },
+        {
+          btn_text: "雑誌名",
+          event_name: "select-labels",
+          classe: "btn btn-primary",
+          event_payload: {
+            msg: "journal"
+          }
+        },
+        {
+          btn_text: "掲載年",
+          event_name: "select-labels",
+          classe: "btn btn-primary",
+          event_payload: {
+            msg: "yearofpublic"
+          }
+        },
       ],
-
       classes: {
         table: "table-bordered table-striped",
         // tableWrapper: "outer-table-div-class wrapper-class-two",
@@ -129,7 +171,6 @@ export default {
         //     }
         // }
       },
-
       config: {
         rows_selectable: true,
         server_mode: false,
@@ -155,11 +196,13 @@ export default {
         page: 1,
       },
       total_rows: 0,
+      showLoader: true,
     };
   },
   methods: {
     onChangeQuery(queryParams) {
       this.queryParams = queryParams;
+      this.showLoader = true;
       console.log(this.queryParams);
       this.fetchData();
     },
@@ -176,6 +219,7 @@ export default {
           console.log(response.data.data);
           self.rows = response.data.data;
           self.total_rows = response.data.total;
+          self.showLoader = false;
         })
         .catch(function (error) {
           console.log(error);
@@ -225,26 +269,23 @@ export default {
       }
     },
 
-    // deletePapers_action(payload) {
-    //     // axios.delete('/api/main/delete' + id).then((res) => {
-    //     // });
-    //     let self = this;
-    //     let url = '/api/main/delete';
-    //     let items = payload.selectedItems;
-    //     // let delete_items = JSON.stringify(items);
-    //     let paper_ids = items.map(key => key.paperid);
-    //     // let paper_names = items.map(key => key.papername);
+    selectLabels(payload) {
+      let label = payload.event_payload.msg.toString();
 
-    //     axios.post(url, paper_ids).then((res) => {
-    //         // console.log(self.$refs.myvuetable.selected_items);
-    //         // console.log("execute");
-    //         self.fetchData();
-    //         self.$refs.myvuetable.unSelectAllItems();
-    //     }).catch(error => {
-    //         alert(error);
-    //     });
-    //     console.log(paper_ids);
-    // },
+      let column = this.columns.filter(x => x.name === label);
+
+      // console.log(column);
+      for (let key in this.columns) {
+
+        if (this.columns[key].name == label) {
+          console.log(this.columns[key]);
+          this.columns[key].visibility = !this.columns[key].visibility;
+          // console.log(key);
+        }
+      }
+    }
+
+
   },
   components: {
     VueBootstrap4Table,

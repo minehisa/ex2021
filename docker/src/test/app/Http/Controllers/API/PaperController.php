@@ -22,20 +22,12 @@ class PaperController extends Controller
     //
   }
 
-  public function get_paper_vue(Request $request)
-  {
-    if (!$request->ajax()) {
-      abort(404);
-    }
-    return response()->json(Auth::user()->paperbasic()->join('paperdetails', 'paperbasic.paperid', '=', 'paperdetails.paperid')->select('paperbasic.paperid', 'papername', 'updatetime', 'regittime')->get());
-  }
-
   public function get_paper_bootstrap(Request $request)
   {
     if (!$request->ajax()) {
       abort(404);
     }
-    return response()->json(Auth::user()->paperbasic()->join('paperdetails', 'paperbasic.paperid', '=', 'paperdetails.paperid')->select('paperbasic.paperid', 'papername', 'updatetime', 'regittime')->paginate());
+    return response()->json(Auth::user()->paperbasic()->join('paperdetails', 'paperbasic.paperid', '=', 'paperdetails.paperid')->select('paperbasic.paperid', 'papername', 'author', 'journal', 'yearofpublic', 'updatetime', 'regittime')->paginate());
   }
 
   public function delete(Request $request)
