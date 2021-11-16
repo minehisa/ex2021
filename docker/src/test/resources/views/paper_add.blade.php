@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}">
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}"> -->
 
@@ -32,6 +33,20 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
       @csrf
     </form>-->
+    <a class="btn-export" id="export">Bibtex</a><!-- Bibtexボタンを追加 -->
+    <script>
+        document.getElementById("export").onclick =function(){
+          var paper_title=document.getElementById("paper_title").value;
+          var author_name=document.getElementById("author_name").value;
+          var journal_title=document.getElementById("journal_title").value;
+          var publisher=document.getElementById("publisher").value;
+          var yearofpublic=document.getElementById("yearofpublic").value;
+          var pages=document.getElementById("pages").value;
+          var volume=document.getElementById("volume").value;
+          alert("@article{"+ "\n"+"    title{"+paper_title+"},\n"+"    author{"+author_name+"},\n"+"    journal{"+journal_title+"},\n"+"    volume{"+volume+"},\n"+"    number{"+"},\n"+"    pages{"+pages+"},\n"+"    year{"+yearofpublic+"},\n"+"    publisher{"+publisher+"},\n"+"}");
+          
+        }
+    </script> 
     <button id="icon-user" class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">
       {{substr($email,0,1)}}
     </button>
@@ -60,43 +75,43 @@
         @if($errors->has('papername'))
         {{ $errors->first('papername') }}<br>
         @endif
-        <input type="text" name="papername" size="50" form="my-awesome-dropzone">
+        <input type="text" name="papername" id="paper_title" size="50" form="my-awesome-dropzone">
       </p>
       <p>著者名(必須):
         @if($errors->has('author'))
         {{ $errors->first('author') }}<br>
         @endif
-        <input type="text" name="author" size="50" form="my-awesome-dropzone">
+        <input type="text" name="author" id="author_name" size="50" form="my-awesome-dropzone">
       </p>
       <p>雑誌名(必須):
         @if($errors->has('journal'))
         {{ $errors->first('journal') }}<br>
         @endif
-        <input type="text" name="journal" size="50" form="my-awesome-dropzone">
+        <input type="text" name="journal" id="journal_title" size="50" form="my-awesome-dropzone">
       </p>
       <p>掲載年(必須):
         @if($errors->has('yearofpublic'))
         {{ $errors->first('yearofpublic') }}<br>
         @endif
-        <input type="text" name="yearofpublic" size="50" form="my-awesome-dropzone">
+        <input type="text" name="yearofpublic" id="yearofpublic" size="50" form="my-awesome-dropzone">
       </p>
       <p>雑誌号(任意):
         @if($errors->has('volume'))
         {{ $errors->first('volume') }}<br>
         @endif
-        <input type="text" name="volume" size="50" form="my-awesome-dropzone">
+        <input type="text" name="volume" id="volume" size="50" form="my-awesome-dropzone">
       </p>
       <p>ページ(任意):
         @if($errors->has('pages'))
         {{ $errors->first('pages') }}<br>
         @endif
-        <input type="text" name="pages" size="50" form="my-awesome-dropzone">
+        <input type="text" name="pages" id="pages" size="50" form="my-awesome-dropzone">
       </p>
       <p>出版社(任意):
         @if($errors->has('publisher'))
         {{ $errors->first('publisher') }}<br>
         @endif
-        <input type="text" name="publisher" size="50" form="my-awesome-dropzone">
+        <input type="text" name="publisher"  id="publisher" size="50" form="my-awesome-dropzone">
       </p>
       <br>
       <p>PDFをドラッグ&ドロップ(必須)</p>
