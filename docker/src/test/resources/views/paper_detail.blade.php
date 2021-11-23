@@ -15,7 +15,7 @@
   <div class="header">
     <!--#に遷移先のURLを指定-->
     <a href="#" class="btn-editbib">編集</a>
-    <a href="#" class="btn-bibtex">BIB TEX形式</a>
+    <a href="#" class="btn-bibtex" id="Bib">BIB TEX形式</a>
     <a href="{{ url('/main') }}" class="btn-back">戻る</a>
     <!--<a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
       document.getElementById('logout-form').submit();">
@@ -86,6 +86,18 @@
       </table>
     </div>
   </div>
+  <script>
+        document.getElementById("Bib").onclick =function(){
+          var paper_title='{{$data->papername}}';
+          var author_name='{{$data->author}}';
+          var journal_title='{{$data->journal}}';
+          var publisher='{{$data->publisher}}';
+          var yearofpublic='{{$data->yearofpublic}}';
+          var pages='{{$data->pages}}';
+          var volume='{{$data->volume}}';
+          result = window.prompt( "@article{"+ "\n"+"    title{"+paper_title+"},\n"+"    author{"+author_name+"},\n"+"    journal{"+journal_title+"},\n"+"    volume{"+volume+"},\n"+"    pages{"+pages+"},\n"+"    year{"+yearofpublic+"},\n"+"    publisher{"+publisher+"},\n"+"}", "@article{"+ "\n"+"    title{"+paper_title+"},\n"+"    author{"+author_name+"},\n"+"    journal{"+journal_title+"},\n"+"    volume{"+volume+"},\n"+"    pages{"+pages+"},\n"+"    year{"+yearofpublic+"},\n"+"    publisher{"+publisher+"},\n"+"}");
+        }
+    </script>
   <!--
       PDFの有無による場合分け機構が必要
       PDFの指定を動的にする必要あり
@@ -96,7 +108,6 @@
     -->
     </iframe>
   </div>
-
 </body>
 
 </html>
