@@ -15,7 +15,7 @@
   <div class="header">
     <!--#に遷移先のURLを指定-->
     <a href="#" class="btn-editbib">編集</a>
-    <a href="#" class="btn-bibtex" id="Bib">BIB TEX形式</a>
+    <a href="#" class="btn-bibtex" value="0" id="Bib">BIB TEX形式</a>
     <a href="{{ url('/main') }}" class="btn-back">戻る</a>
     <!--<a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
       document.getElementById('logout-form').submit();">
@@ -87,7 +87,7 @@
     </div>
   </div>
   <script>
-        document.getElementById("Bib").onclick =function(){
+        document.getElementById("Bib").onclick =function(){        
           var paper_title='{{$data->papername}}';
           var author_name='{{$data->author}}';
           var journal_title='{{$data->journal}}';
@@ -95,7 +95,34 @@
           var yearofpublic='{{$data->yearofpublic}}';
           var pages='{{$data->pages}}';
           var volume='{{$data->volume}}';
-          result = window.prompt( "@article{"+ "\n"+"    title{"+paper_title+"},\n"+"    author{"+author_name+"},\n"+"    journal{"+journal_title+"},\n"+"    volume{"+volume+"},\n"+"    pages{"+pages+"},\n"+"    year{"+yearofpublic+"},\n"+"    publisher{"+publisher+"},\n"+"}", "@article{"+ "\n"+"    title{"+paper_title+"},\n"+"    author{"+author_name+"},\n"+"    journal{"+journal_title+"},\n"+"    volume{"+volume+"},\n"+"    pages{"+pages+"},\n"+"    year{"+yearofpublic+"},\n"+"    publisher{"+publisher+"},\n"+"}");
+          author_name = author_name.replace("，","&nbsp; and")
+          author_name = author_name.replace(",","&nbsp; and")
+          BibWindow = window.open("", "myWindow", "width=500,height=500");
+          
+          if(volume && pages && publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"volume{"+volume+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
+          }
+          if(volume && pages && !publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"volume{"+volume+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
+          }
+          if(volume && !pages && publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"volume{"+volume+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
+          }
+          if(volume && !pages && !publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"volume{"+volume+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
+          }
+          if(!volume && pages && publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
+          }
+          if(!volume && pages && !publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
+          }
+          if(!volume && !pages && publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
+          }
+          if(!volume && !pages && !publisher){
+            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
+          }
         }
     </script>
   <!--
