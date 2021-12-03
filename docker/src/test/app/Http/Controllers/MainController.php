@@ -8,6 +8,9 @@ use App\Models\Paperdetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 class MainController extends Controller
 {
   public function index()
@@ -70,10 +73,10 @@ class MainController extends Controller
         'author' => 'required|between:1,250',
         'journal' => 'required|between:1,100',
         'yearofpublic' => 'required|integer|between:0,2100',
-        'file' => 'required|mimes:pdf',
         'volume' => 'nullable|integer|between:0,2147483647',
         'pages' => 'nullable|max:10',
         'publisher' => 'nullable|max:100',
+        'file' => 'required|mimes:pdf',
       ],
       [
         'papername.required' => '必須項目です．',
@@ -85,12 +88,12 @@ class MainController extends Controller
         'yearofpublic.required' => '必須項目です．',
         'yearofpublic.integer' => '半角で入力してください．',
         'yearofpublic.between' => '0から2100の範囲で入力してください',
-        'file.required' => '必須項目です．',
-        'file.mimes' => 'pdfを指定してください．',
         'volume.integer' => '半角で入力してください．',
         'volume.between' => '0から2147483647の範囲で入力してください．',
         'pages.max' => '0から10文字以内で入力してください．',
         'publisher.max' => '0から100文字以内で入力してください．',
+        'file.required' => '必須項目です．',
+        'file.mimes' => 'pdfを指定してください．',
       ]
     );
 
@@ -100,7 +103,9 @@ class MainController extends Controller
     foreach ($items as $item) {
       $exists = Paperdetail::where([
         ['paperid', '=', $item->paperid],
-        ['papername', '=', $request->papername]
+        ['papername', '=', $request->papername],
+        ['author', '=', $request->author],
+        ['yearofpublic', '=', $request->yearofpublic]
       ])->exists();
       if ($exists) {                               //同じ論文があったとき
         break;
