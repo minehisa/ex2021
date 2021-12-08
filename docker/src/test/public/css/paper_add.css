@@ -225,6 +225,8 @@ span.icon-user:hover + p.name-user {
     width: auto;
     height: 80%;
     z-index: 3;
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
 .add-form{
@@ -253,10 +255,12 @@ span.icon-user:hover + p.name-user {
 }
 
 /* 入力フォームに関する設定 */
+
 p {
     display: block;
     padding: 10px;
 }
+
 input[type="text"]{
     height: 30px;
   }
@@ -265,6 +269,59 @@ input[type="text"]{
     font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
     text-align: center;
     padding-top: 40px;
+}
+
+label{
+    float: left;
+    font-weight: bold;
+}
+
+.add_paper_info{
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.text_underline{
+    position: relative;
+    border-top: 2px solid gray;
+}
+
+.text_underline::before{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 0px;
+    height: 2px;
+    content: '';
+    background-color: #9ec34b;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#paper_title:focus + .text_underline::before{
+    width: 100%;
+}
+#author_name:focus + .text_underline::before{
+    width: 100%;
+}
+#journal_title:focus + .text_underline::before{
+    width: 100%;
+}
+#yearofpublic:focus + .text_underline::before{
+    width: 100%;
+}
+#volume:focus + .text_underline::before{
+    width: 100%;
+}
+#pages:focus + .text_underline::before{
+    width: 100%;
+}
+#publisher:focus + .text_underline::before{
+    width: 100%;
 }
 
 /* 追加ボタンに関する設定 */

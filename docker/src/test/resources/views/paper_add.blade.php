@@ -18,6 +18,7 @@
         @yield('script')
   </script> -->
   <script src="{{ asset('js/icon.js') }}"></script>
+  <script src="{{ asset('js/add_input.js') }}"></script>
 
   <!-- 下部にタイトルを動的に適用 -->
   <title>文献追加</title>
@@ -97,48 +98,55 @@
     <form method="POST" action="{{ route('paper_add') }}" id="my-awesome-dropzone" enctype="multipart/form-data" class="add-form">
       @csrf
       <br>
-      <p>論文名(必須):
+      <div><label for="paper_title" id="l_paper_title">論文名(必須):</label>
         @if($errors->has('papername'))
         {{ $errors->first('papername') }}<br>
         @endif
-        <input type="text" name="papername" id="paper_title" size="50" form="my-awesome-dropzone">
-      </p>
-      <p>著者名(必須):
+        <input type="text" name="papername" id="paper_title" class="add_paper_info" size="50" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div><br>
+      <div><label for="paper_title" id="l_author_name">著者名(必須):</label>
         @if($errors->has('author'))
         {{ $errors->first('author') }}<br>
         @endif
-        <input type="text" name="author" id="author_name" size="50" form="my-awesome-dropzone">
-      </p>
-      <p>雑誌名(必須):
+        <input type="text" name="author" id="author_name" class="add_paper_info" size="50" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div><br>
+      <div><label for="paper_title" id="l_journal_title">雑誌名(必須):</label>
         @if($errors->has('journal'))
         {{ $errors->first('journal') }}<br>
         @endif
-        <input type="text" name="journal" id="journal_title" size="50" form="my-awesome-dropzone">
-      </p>
-      <p>掲載年(必須):
+        <input type="text" name="journal" id="journal_title" size="50"  class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div><br>
+      <div><label for="paper_title" id="l_yearofpublic">掲載年(必須):</label>
         @if($errors->has('yearofpublic'))
         {{ $errors->first('yearofpublic') }}<br>
         @endif
-        <input type="text" name="yearofpublic" id="yearofpublic" size="50" form="my-awesome-dropzone">
-      </p>
-      <p>雑誌号(任意):
+        <input type="text" name="yearofpublic" id="yearofpublic" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div><br>
+      <div><label for="paper_title" id="l_volume">雑誌号(任意):</label>
         @if($errors->has('volume'))
         {{ $errors->first('volume') }}<br>
         @endif
-        <input type="text" name="volume" id="volume" size="50" form="my-awesome-dropzone">
-      </p>
-      <p>ページ(任意):
+        <input type="text" name="volume" id="volume" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div><br>
+      <div><label for="paper_title" id="l_pages">ページ(任意):</label>
         @if($errors->has('pages'))
         {{ $errors->first('pages') }}<br>
         @endif
-        <input type="text" name="pages" id="pages" size="50" form="my-awesome-dropzone">
-      </p>
-      <p>出版社(任意):
+        <input type="text" name="pages" id="pages" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div><br>
+      <div><label for="paper_title" id="l_publisher">出版社(任意):</label>
         @if($errors->has('publisher'))
         {{ $errors->first('publisher') }}<br>
         @endif
-        <input type="text" name="publisher"  id="publisher" size="50" form="my-awesome-dropzone">
-      </p>
+        <input type="text" name="publisher"  id="publisher" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <div class="text_underline"></div>
+      </div>
       <br>
       <p>PDFをドラッグ&ドロップ(必須)</p>
 
