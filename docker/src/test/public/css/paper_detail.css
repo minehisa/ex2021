@@ -32,7 +32,7 @@
 
 /* ヘッダーのボタン設定 */
 /* 編集ボタンの設定 */
-.btn-editbib {
+.btn-edit {
     display: inline-block;
     width: 180px;
     height: 40px;
@@ -52,7 +52,7 @@
     left: 5px;
     top: 5px;
 }
-.btn-editbib:after {
+.btn-edit:after {
     width: 100%;
     height: 0;
     content: "";
@@ -65,14 +65,14 @@
     transition: .2s;
     z-index: -1;
 }
-.btn-editbib:hover {
+.btn-edit:hover {
     color: #000000;
 }
-.btn-editbib:hover:after {
+.btn-edit:hover:after {
     height: 240%;
     opacity: 1;
 }
-.btn-editbib:active:after {
+.btn-edit:active:after {
     height: 340%;
     opacity: 1;
 }
@@ -139,7 +139,7 @@
     font-weight: bold;
     border: 2px solid #ffa500;
     position: absolute;
-    right: 180px;
+    right: 90px;
     top: 5px;
     overflow: hidden;
     z-index: 1;
@@ -313,6 +313,27 @@ span.icon-user:hover + p.name-user {
     transition: .5s;
 }
 */
+
+@media screen and (max-width: 700px) {
+    .header{
+        height: 100px;
+    }
+    .detail{
+        top: 140px;
+    }
+    .show-pdf{
+        top: 140px;
+    }
+    .btn-back{
+        top: 70px;
+    }
+    .btn-logout{
+        top: 70px;
+    }
+    .icon-user{
+        top: 70px;
+    }
+}
 
 /* 論文名の設定 */
 .paper-name{

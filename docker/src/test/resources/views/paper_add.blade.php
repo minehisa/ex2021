@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}">
+  <!--<link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}"> -->
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}"> -->
 
@@ -26,6 +26,7 @@
 <body>
   <div class="header">
     <h1 class="page-title">論文追加</h1>
+    <a class="btn-export" id="export">Bibtex</a><!-- Bibtexボタンを追加 -->
     <a href="{{ url('/main') }}" class="btn-back">戻る</a>
     <!--<a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">
@@ -34,7 +35,6 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
       @csrf
     </form>-->
-    <a class="btn-export" id="export">Bibtex</a><!-- Bibtexボタンを追加 -->
     <script>
         document.getElementById("export").onclick =function(){
           var paper_title=document.getElementById("paper_title").value;
