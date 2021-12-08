@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('/css/Top.css') }}">
   <title>Topページ</title>
 </head>
