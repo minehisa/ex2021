@@ -20,6 +20,7 @@
     width: 500px;
     height: 50px;
     max-width: 800px;
+    min-width: 100px;
     border: solid 3px #000;
 }
 /* 戻るボタン設定 */
@@ -373,6 +374,10 @@ label{
     width: 100%;
 }
 
+#l_pdffile {
+    padding-bottom: 10px;
+}
+
 /* 追加ボタンに関する設定 */
 .btn-submit {
     display: inline-block;
@@ -415,6 +420,20 @@ label{
 .btn-submit:active:after {
     height: 340%;
     opacity: 1;
+}
+
+.submit-area {
+    padding-top: 10px;
+    position: relative;
+    top: 40px;
+    text-align: center;
+}
+
+.error-mes {
+    display: inline;
+    color: red;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* ドラッグ＆ドロップのエリアの設定 */
