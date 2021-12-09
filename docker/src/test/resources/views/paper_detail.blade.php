@@ -95,8 +95,42 @@
           var yearofpublic='{{$data->yearofpublic}}';
           var pages='{{$data->pages}}';
           var volume='{{$data->volume}}';
-          author_name = author_name.replace("，","&nbsp; and")
-          author_name = author_name.replace(",","&nbsp; and")
+          author_name = author_name.replace(/(\，|\,)/g," "+"and"+" ");
+          var words = [];
+          var and_count = 0;
+          var tmp;
+          words = author_name.split(/\s+/);
+          var targetStr = "and"
+          var and_count_max =(String(words).match(/and/g)||[]).length;
+          var count = 0;
+          var remain_count = 0;
+
+          for (let i = 0; i < words.length; ++i){
+            if(and_count == and_count_max){
+              remain_count++;
+              if (remain_count == 2){
+                tmp = words[i-1];
+                words[i-1] = words[i];
+                words[i] = "，" + tmp;
+              }
+            }
+            else{
+              if (String(words[i]) != "and"){
+              count++;
+            }
+            else{
+              and_count++;
+              if (count == 2){
+                tmp = words[i-2];
+                words[i-2] = words[i-1];
+                words[i-1] = "，" + tmp;
+              }
+              count = 0;
+            }
+            }
+          }
+
+          author_name = words.join(' ')
           BibWindow = window.open("", "myWindow", "width=500,height=500");
           
           if(volume && pages && publisher){
