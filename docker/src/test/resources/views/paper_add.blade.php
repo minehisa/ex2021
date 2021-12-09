@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
-  <!--<link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}"> -->
+  <link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}"> 
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}"> -->
 
@@ -44,10 +44,43 @@
           var yearofpublic=document.getElementById("yearofpublic").value;
           var pages=document.getElementById("pages").value;
           var volume=document.getElementById("volume").value;
-          author_name = author_name.replace("，","&nbsp; and")
-          author_name = author_name.replace(",","&nbsp; and")
-          BibWindow = window.open("", "myWindow", "width=500,height=500");
-          
+          author_name = author_name.replace(/(\，|\,)/g," "+"and"+" ");
+          var words = [];
+          var and_count = 0;
+          var tmp;
+          words = author_name.split(/\s+/);
+          var targetStr = "and"
+          var and_count_max =(String(words).match(/and/g)||[]).length;
+          var count = 0;
+          var remain_count = 0;
+
+          for (let i = 0; i < words.length; ++i){
+            if(and_count == and_count_max){
+              remain_count++;
+              if (remain_count == 2){
+                tmp = words[i-1];
+                words[i-1] = words[i];
+                words[i] = "，" + tmp;
+              }
+            }
+            else{
+              if (String(words[i]) != "and"){
+              count++;
+            }
+            else{
+              and_count++;
+              if (count == 2){
+                tmp = words[i-2];
+                words[i-2] = words[i-1];
+                words[i-1] = "，" + tmp;
+              }
+              count = 0;
+            }
+            }
+          }
+
+          author_name = words.join(' ')
+          BibWindow = window.open("", "myWindow", "width=500,height=500");          
           if(volume && pages && publisher){
             BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"volume{"+volume+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
           }
@@ -70,7 +103,7 @@
             BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
           }
           if(!volume && !pages && !publisher){
-            BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
+            BibWindow.document.write("<p>@article{"+"<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
           }
         }
     </script> 
