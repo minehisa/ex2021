@@ -14,7 +14,7 @@
 <body>
   <div class="header">
     <!--#に遷移先のURLを指定-->
-    <a href="#" class="btn-editbib">編集</a>
+    <a href="#" class="btn-edit">編集</a>
     <a href="#" class="btn-bibtex" value="0" id="Bib">BIB TEX形式</a>
     <a href="{{ url('/main') }}" class="btn-back">戻る</a>
     <!--<a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();
