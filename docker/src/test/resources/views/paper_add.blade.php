@@ -80,7 +80,17 @@
           }
 
           author_name = words.join(' ')
-          BibWindow = window.open("", "myWindow", "width=500,height=500");          
+          BibWindow = window.open("", "myWindow", "width=500,height=500");
+          var div_paper_title = paper_title.split(/\s+/);
+
+          for (let i = 0; i < div_paper_title.length; ++i){
+            if(String(div_paper_title[i]) !== 'A' && String(div_paper_title[i]) !== 'a' && String(div_paper_title[i]) !== 'An' && String(div_paper_title[i]) !== 'an' ){
+              div_paper_title[i] = ((String(div_paper_title[i])).replace(/[^0-9a-zA-Z]/gi,"")).toLowerCase() + '，';
+              var document_reference_name = (String(words[0])).toLowerCase() + String(yearofpublic) + div_paper_title[i];
+              break;
+            }
+          }
+          
           if(volume && pages && publisher){
             BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"volume{"+volume+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"pages{"+pages+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
           }
@@ -103,7 +113,7 @@
             BibWindow.document.write("<p>@article{"+ "<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"publisher{"+publisher+"}<br>\n"+"}</p>");
           }
           if(!volume && !pages && !publisher){
-            BibWindow.document.write("<p>@article{"+"<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
+            BibWindow.document.write("<p>@article{"+ document_reference_name +"<br>\n"+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"title{"+paper_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"author{"+author_name+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"journal{"+journal_title+"},<br>\n"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"year{"+yearofpublic+"}<br>\n"+"}</p>");
           }
         }
     </script> 
