@@ -20,7 +20,7 @@ class CreatePaperdetailsTable extends Migration
       // $table->foreignId('paperid')->constrained('paperbasics');
       //   $table->unsignedbigInteger('paperid')->unique();
       $table->bigIncrements('paperid');
-      $table->string('papername', 100);
+      $table->string('papername', 250);
       $table->string('author', 250);
       $table->string('journal', 100);
       $table->integer('yearofpublic');

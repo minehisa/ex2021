@@ -25,4 +25,5 @@ Route::group(["middleware" => "auth.api"], function () {
   Route::get('/main/papers', 'API\PaperController@get_paper_bootstrap');
   // 論文削除
   Route::post('/main/delete', 'API\PaperController@delete');
+  Route::post('/paper_detail/{paperid}', 'API\PaperController@update');
 });
