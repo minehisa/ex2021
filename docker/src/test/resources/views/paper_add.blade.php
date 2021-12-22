@@ -160,7 +160,7 @@
           {{ $errors->first('papername') }}<br>
           @endif
         </div>
-        <input type="text" name="papername" id="paper_title" class="add_paper_info" size="50" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="papername" id="paper_title" class="add_paper_info" size="50" form="my-awesome-dropzone" placeholder="(例)Deep Learningを用いた猫の個体識別に関する研究">
         <div class="text_underline"></div>
       </div><br>
       <div>
@@ -170,7 +170,7 @@
           {{ $errors->first('author') }}<br>
           @endif
         </div>
-        <input type="text" name="author" id="author_name" class="add_paper_info" size="50" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="author" id="author_name" class="add_paper_info" size="50" form="my-awesome-dropzone" placeholder="(例)Taro Joho    ※First nameとLast nameの間にspace">
         <div class="text_underline"></div>
       </div><br>
       <div>
@@ -180,7 +180,7 @@
           {{ $errors->first('journal') }}<br>
           @endif
         </div>
-        <input type="text" name="journal" id="journal_title" size="50"  class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="journal" id="journal_title" size="50"  class="add_paper_info" form="my-awesome-dropzone" placeholder="(例)Journal of ehime">
         <div class="text_underline"></div>
       </div><br>
       <div>
@@ -190,7 +190,7 @@
           {{ $errors->first('yearofpublic') }}<br>
           @endif
         </div>
-        <input type="text" name="yearofpublic" id="yearofpublic" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="yearofpublic" id="yearofpublic" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="(例)2021     ※半角数字のみ">
         <div class="text_underline"></div>
       </div><br>
       <div>
@@ -200,7 +200,7 @@
           {{ $errors->first('volume') }}<br>
           @endif
         </div>
-        <input type="text" name="volume" id="volume" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="volume" id="volume" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="(例) 3         ※半角数字のみ">
         <div class="text_underline"></div>
       </div><br>
       <div>
@@ -210,7 +210,7 @@
           {{ $errors->first('pages') }}<br>
           @endif
         </div>
-        <input type="text" name="pages" id="pages" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="pages" id="pages" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="(例) 14      ※半角数字のみ">
         <div class="text_underline"></div>
       </div><br>
       <div>
@@ -220,7 +220,7 @@
           {{ $errors->first('publisher') }}<br>
           @endif
         </div>
-        <input type="text" name="publisher"  id="publisher" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="publisher"  id="publisher" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="">
         <div class="text_underline"></div>
       </div>
       <br>
