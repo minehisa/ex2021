@@ -136,7 +136,7 @@ class PaperController extends Controller
     $paperbasic = Auth::user()->paperbasic()->where('paperid', '=', $paperid)->first();
     $paperbasic->paperid = $paperid;
     $paperbasic->id = Auth::id();
-    // $paperbasic->updatetime = now();
+    $paperbasic->updatetime = now();
     // $paperbasic->regittime = now();
     $paperbasic->save();
     $paperdetails = Paperdetail::where('paperid', '=', $paperid)->first();
