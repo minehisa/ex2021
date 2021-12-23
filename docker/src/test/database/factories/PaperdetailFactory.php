@@ -16,6 +16,7 @@ $factory->define(App\Models\Paperdetail::class, function (Faker $faker) {
     'journal' => $faker->company,
     'yearofpublic' => $faker->year,
     'volume' => $faker->randomNumber(2),
+    'number' => $faker->randomNumber(2),
     'pages' => $faker->randomNumber(2),
     'publisher' => $faker->realText(20),
     'paperpdf' => $faker->text(30),

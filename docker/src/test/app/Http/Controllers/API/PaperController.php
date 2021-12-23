@@ -99,6 +99,7 @@ class PaperController extends Controller
         'journal' => 'required|between:1,100',
         'yearofpublic' => 'required|integer|between:0,2100',
         'volume' => 'nullable|integer|between:0,2147483647',
+        'number' => 'nullable|max:10',
         'pages' => 'nullable|max:10',
         'publisher' => 'nullable|max:100',
       ],
@@ -114,6 +115,7 @@ class PaperController extends Controller
         'yearofpublic.between' => '0から2100の範囲で入力してください',
         'volume.integer' => '半角で入力してください．',
         'volume.between' => '0から2147483647の範囲で入力してください．',
+        'number.max' => '0から10文字以内で入力してください．',
         'pages.max' => '0から10文字以内で入力してください．',
         'publisher.max' => '0から100文字以内で入力してください．',
       ]
@@ -130,6 +132,7 @@ class PaperController extends Controller
     $journal = $array['journal'];
     $yearofpublic = $array['yearofpublic'];
     $volume = $array['volume'];
+    $number = $array['number'];
     $pages = $array['pages'];
     $publisher = $array['publisher'];
 
@@ -146,6 +149,7 @@ class PaperController extends Controller
     $paperdetails->journal = $journal;
     $paperdetails->yearofpublic = $yearofpublic;
     $paperdetails->volume = $volume;
+    $paperdetails->number = $number;
     $paperdetails->pages = $pages;
     $paperdetails->publisher = $publisher;
     $paperdetails->save();

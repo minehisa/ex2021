@@ -16,6 +16,7 @@ class Paperdetail extends Model
     'journal',
     'yearofpublic',
     'volume',
+    'number',
     'pages',
     'publisher',
     'paperpdf',
