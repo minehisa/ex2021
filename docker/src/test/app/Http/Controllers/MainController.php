@@ -23,22 +23,20 @@ class MainController extends Controller
     $email = $user_data->email;
     $number = 0;
 
-    foreach(str_split($email) as $value){
+    foreach (str_split($email) as $value) {
       $number = $number + ord($value);
     }
     $colorBackground =  ($number * $number) % 360;
-    if($colorBackground <= 180){
+    if ($colorBackground <= 180) {
       $colorChar = "black";
-    }
-    else{
+    } else {
 
       $colorChar = "white";
     }
     // ------------------------------
 
 
-    return view('main',compact("email", "colorBackground", "colorChar"));
-
+    return view('main', compact("email", "colorBackground", "colorChar"));
   }
 
   // 論文追加
@@ -49,19 +47,18 @@ class MainController extends Controller
     $email = $user_data->email;
     $number = 0;
 
-    foreach(str_split($email) as $value){
+    foreach (str_split($email) as $value) {
       $number = $number + ord($value);
     }
     $colorBackground =  ($number * $number) % 360;
-    if($colorBackground <= 180){
+    if ($colorBackground <= 180) {
       $colorChar = "black";
-    }
-    else{
+    } else {
 
       $colorChar = "white";
     }
     // ------------------------------
-    return view('paper_add',compact("email", "colorBackground", "colorChar"));
+    return view('paper_add', compact("email", "colorBackground", "colorChar"));
   }
   public function upload_paper(Request $request)
   {
@@ -74,6 +71,7 @@ class MainController extends Controller
         'journal' => 'required|between:1,100',
         'yearofpublic' => 'required|integer|between:0,2100',
         'volume' => 'nullable|integer|between:0,2147483647',
+        'number' => 'nullable|max:10',
         'pages' => 'nullable|max:10',
         'publisher' => 'nullable|max:100',
         'file' => 'required|mimes:pdf',
@@ -90,6 +88,7 @@ class MainController extends Controller
         'yearofpublic.between' => '0から2100の範囲で入力してください',
         'volume.integer' => '半角で入力してください．',
         'volume.between' => '0から2147483647の範囲で入力してください．',
+        'number.max' => '0から10文字以内で入力してください．',
         'pages.max' => '0から10文字以内で入力してください．',
         'publisher.max' => '0から100文字以内で入力してください．',
         'file.required' => '必須項目です．',
@@ -125,10 +124,11 @@ class MainController extends Controller
       $paperdetails->journal = $request->journal;
       $paperdetails->yearofpublic = $request->yearofpublic;
       $paperdetails->volume = $request->volume;
+      $paperdetails->number = $request->number;
       $paperdetails->pages = $request->pages;
       $paperdetails->publisher = $request->publisher;
       // PDF 保存
-     // $paperdetails->paperpdf = $request->paperpdf;
+      // $paperdetails->paperpdf = $request->paperpdf;
       $file = $request->file('file');
       $filename = Auth::id() . '_' . $paperbasic->paperid . '_' . $request->papername . '.pdf';
       $dir = 'public/pdf/';
@@ -148,14 +148,13 @@ class MainController extends Controller
     $email = $user_data->email;
     $number = 0;
 
-    foreach(str_split($email) as $value){
+    foreach (str_split($email) as $value) {
       $number = $number + ord($value);
     }
     $colorBackground =  ($number * $number) % 360;
-    if($colorBackground <= 180){
+    if ($colorBackground <= 180) {
       $colorChar = "black";
-    }
-    else{
+    } else {
 
       $colorChar = "white";
     }
@@ -180,14 +179,13 @@ class MainController extends Controller
 
 
 
-    foreach(str_split($email) as $value){
+    foreach (str_split($email) as $value) {
       $number = $number + ord($value);
     }
     $colorBackground =  ($number * $number) % 360;
-    if($colorBackground <= 180){
+    if ($colorBackground <= 180) {
       $colorChar = "black";
-    }
-    else{
+    } else {
 
       $colorChar = "white";
     }

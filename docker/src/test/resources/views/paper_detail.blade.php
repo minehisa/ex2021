@@ -88,9 +88,14 @@
               <input type="text" class="form-control" id="mdl-year">
             </div>
             <div class="form-group modal-volume">
-              <label for="title-text" class="col-form-label">掲載号</label>
+              <label for="title-text" class="col-form-label">掲載巻</label>
               <span class="text-danger" id="volumeError"></span>
               <input type="text" class="form-control" id="mdl-volume">
+            </div>
+            <div class="form-group modal-number">
+              <label for="title-text" class="col-form-label">掲載号</label>
+              <span class="text-danger" id="numberError"></span>
+              <input type="text" class="form-control" id="mdl-number">
             </div>
             <div class="form-group modal-pages">
               <label for="title-text" class="col-form-label">掲載ページ</label>
@@ -137,8 +142,12 @@
           <td id='td-year'>{{$data->yearofpublic}}</td>
         </tr>
         <tr>
-          <th>掲載号</th>
+          <th>掲載巻</th>
           <td id='td-volume'>{{$data->volume}}</td>
+        </tr>
+        <tr>
+          <th>掲載号</th>
+          <td id='td-number'>{{$data->number}}</td>
         </tr>
         <tr>
           <th>掲載ページ</th>
@@ -174,16 +183,16 @@
       for (let i = 0; i < words.length; ++i) {
         if (and_count == and_count_max) {
           remain_count++;
-          if (remain_count == 2 && words.length-1 == i) {
+          if (remain_count == 2 && words.length - 1 == i) {
             tmp = words[i - 1];
             words[i - 1] = words[i];
             words[i] = "，" + tmp;
           }
-          if (remain_count == 3 && words.length-1 == i){
-            tmp = '，'+ words[i-2];  
-            words[i-2] = words[i]; 
-            words[i] = words[i-1];
-            words[i-1] = tmp;
+          if (remain_count == 3 && words.length - 1 == i) {
+            tmp = '，' + words[i - 2];
+            words[i - 2] = words[i];
+            words[i] = words[i - 1];
+            words[i - 1] = tmp;
           }
         } else {
           if (String(words[i]) != "and") {
@@ -195,18 +204,18 @@
               words[i - 2] = words[i - 1];
               words[i - 1] = "，" + tmp;
             }
-            if (count == 3){
-              tmp = '，'+ words[i-3];  
-              words[i-3] = words[i-1]; 
-              words[i-1] = words[i-2];
-              words[i-2] = tmp;
+            if (count == 3) {
+              tmp = '，' + words[i - 3];
+              words[i - 3] = words[i - 1];
+              words[i - 1] = words[i - 2];
+              words[i - 2] = tmp;
             }
             count = 0;
           }
           flag_count++;
         }
       }
-      
+
       author_name = words.join(' ')
       BibWindow = window.open("", "myWindow", "width=500,height=500");
       var div_paper_title = paper_title.split(/\s+/);
@@ -219,8 +228,8 @@
         }
       }
 
-    var paper_title_lowercase = paper_title.split(/\s+/);
-      for (let i =1; i < paper_title_lowercase.length; ++i){
+      var paper_title_lowercase = paper_title.split(/\s+/);
+      for (let i = 1; i < paper_title_lowercase.length; ++i) {
         paper_title_lowercase[i] = paper_title_lowercase[i].toLowerCase();
       }
 
@@ -260,6 +269,7 @@
         let journal_title = '{{$data->journal}}';
         let yearofpublic = '{{$data->yearofpublic}}';
         let volume = '{{$data->volume}}';
+        let number = '{{$data->number}}';
         let pages = '{{$data->pages}}';
         let publisher = '{{$data->publisher}}';
 
@@ -270,6 +280,7 @@
         modal.find('.modal-journal input').val(journal_title);
         modal.find('.modal-year input').val(yearofpublic);
         modal.find('.modal-volume input').val(volume);
+        modal.find('.modal-number input').val(number);
         modal.find('.modal-pages input').val(pages);
         modal.find('.modal-publisher input').val(publisher);
       });
@@ -283,6 +294,7 @@
         let journal_title = $('#mdl-journal').val();
         let yearofpublic = $('#mdl-year').val();
         let volume = $('#mdl-volume').val();
+        let number = $('#mdl-number').val();
         let pages = $('#mdl-pages').val();
         let publisher = $('#mdl-publisher').val();
         $.ajax({
@@ -300,12 +312,13 @@
             journal: journal_title,
             yearofpublic: yearofpublic,
             volume: volume,
+            number: number,
             pages: pages,
             publisher: publisher
           },
           success: function(response) {
             console.log(response);
-            updateText(paper_title, author_name, journal_title, yearofpublic, volume, pages, publisher);
+            updateText(paper_title, author_name, journal_title, yearofpublic, volume, number, pages, publisher);
             $("#modal1").modal('hide'); // モーダルを閉じる
           },
           error: function(response) {
@@ -314,6 +327,7 @@
             $('#journalError').text(response.responseJSON.errors.journal);
             $('#yearError').text(response.responseJSON.errors.yearofpublic);
             $('#volumeError').text(response.responseJSON.errors.volume);
+            $('#numberError').text(response.responseJSON.errors.number);
             $('#pagesError').text(response.responseJSON.errors.pages);
             $('#publisherError').text(response.responseJSON.errors.publisher);
             console.log(response.responseJSON.errors.papername);
@@ -341,18 +355,20 @@
         $('#journalError').text('');
         $('#yearError').text('');
         $('#volumeError').text('');
+        $('#numberError').text('');
         $('#pagesError').text('');
         $('#publisherError').text('');
         console.log('reset text');
       }
 
-      function updateText(papername, author, journal, year, volume, pages, publisher) {
+      function updateText(papername, author, journal, year, volume, number, pages, publisher) {
         $('#title-papername').text(papername);
         $('#td-papername').text(papername);
         $('#td-author').text(author);
         $('#td-journal').text(journal);
         $('#td-year').text(year);
         $('#td-volume').text(volume);
+        $('#td-number').text(number);
         $('#td-pages').text(pages);
         $('#td-publisher').text(publisher);
       }
