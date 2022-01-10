@@ -11,6 +11,7 @@
     position: fixed;
     z-index: 3;
     margin-top: 5px;
+    background-color: #f8fafc;
 }
 .detail{
     text-align: center;
