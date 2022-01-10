@@ -25,8 +25,10 @@ class CreatePaperdetailsTable extends Migration
       $table->string('journal', 100);
       $table->integer('yearofpublic');
       $table->integer('volume')->nullable();
+      $table->integer('number')->nullable();
       $table->string('pages', 10)->nullable();
       $table->string('publisher', 50)->nullable();
+
       // $table->string('paperpdf');
       $table->string('paperpdf', 200);
 
