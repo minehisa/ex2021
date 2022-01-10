@@ -367,6 +367,9 @@ label{
 #volume:focus + .text_underline::before{
     width: 100%;
 }
+#number:focus + .text_underline::before{
+    width: 100%;
+}
 #pages:focus + .text_underline::before{
     width: 100%;
 }

@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const l_year_focus = document.getElementById('l_yearofpublic');
     const volume_focus = document.getElementById('volume');
     const l_volume_focus = document.getElementById('l_volume');
+    const number_focus = document.getElementById('number');
+    const l_number_focus = document.getElementById('l_number');
     const pages_focus = document.getElementById('pages');
     const l_pages_focus = document.getElementById('l_pages');
     const publisher_focus = document.getElementById('publisher');
@@ -97,6 +99,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     volume_focus.addEventListener('blur',() => {
         l_volume_focus.animate({
+            color: 'black',
+            textShadow: "none"
+        }, {
+            duration: 200,
+            fill: "forwards"
+        });
+    });
+    number_focus.addEventListener('focus',() => {
+        l_number_focus.animate({
+            color: '#ffffff',
+            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+        }, {
+            duration: 200,
+            fill: "forwards"
+        });
+    });
+    number_focus.addEventListener('blur',() => {
+        l_number_focus.animate({
             color: 'black',
             textShadow: "none"
         }, {

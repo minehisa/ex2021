@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}"> -->
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}"> -->
 
@@ -213,7 +213,7 @@
           {{ $errors->first('number') }}<br>
           @endif
         </div>
-        <input type="text" name="number" id="number" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="例：">
+        <input type="text" name="number" id="number" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="(例) 2         ※半角数字のみ">
         <div class="text_underline"></div>
       </div><br>
       <div>
