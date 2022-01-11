@@ -169,97 +169,127 @@
       var yearofpublic = '{{$data->yearofpublic}}';
       var pages = '{{$data->pages}}';
       var volume = '{{$data->volume}}';
+      var number = '{{$data->number}}';
+
       author_name = author_name.replace(/(\，|\,)/g, " " + "and" + " ");
-      var words = [];
-      var and_count = 0;
-      var tmp;
-      words = author_name.split(/\s+/);
-      var targetStr = "and"
-      var and_count_max = (String(words).match(/and/g) || []).length;
-      var count = 0;
-      var remain_count = 0;
-      var flag_count = 0;
+        var words = [];
+        var and_count = 0;
+        var tmp;
+        words = author_name.split(/\s+/);
+        var targetStr = "and"
+        var and_count_max = (String(words).match(/and/g) || []).length;
+        var count = 0;
+        var remain_count = 0;
+        var flag_count = 0;
 
-      for (let i = 0; i < words.length; ++i) {
-        if (and_count == and_count_max) {
-          remain_count++;
-          if (remain_count == 2 && words.length - 1 == i) {
-            tmp = words[i - 1];
-            words[i - 1] = words[i];
-            words[i] = "，" + tmp;
-          }
-          if (remain_count == 3 && words.length - 1 == i) {
-            tmp = '，' + words[i - 2];
-            words[i - 2] = words[i];
-            words[i] = words[i - 1];
-            words[i - 1] = tmp;
-          }
-        } else {
-          if (String(words[i]) != "and") {
-            count++;
+        for (let i = 0; i < words.length; ++i) {
+          if (and_count == and_count_max) {
+            remain_count++;
+            if (remain_count == 2 && words.length - 1 == i) {
+              tmp = words[i - 1];
+              words[i - 1] = words[i];
+              words[i] = "，" + tmp;
+            }
+            if (remain_count == 3 && words.length - 1 == i) {
+              tmp = '，' + words[i - 2];
+              words[i - 2] = words[i];
+              words[i] = words[i - 1];
+              words[i - 1] = tmp;
+            }
           } else {
-            and_count++;
-            if (count == 2) {
-              tmp = words[i - 2];
-              words[i - 2] = words[i - 1];
-              words[i - 1] = "，" + tmp;
+            if (String(words[i]) != "and") {
+              count++;
+            } else {
+              and_count++;
+              if (count == 2) {
+                tmp = words[i - 2];
+                words[i - 2] = words[i - 1];
+                words[i - 1] = "，" + tmp;
+              }
+              if (count == 3) {
+                tmp = '，' + words[i - 3];
+                words[i - 3] = words[i - 1];
+                words[i - 1] = words[i - 2];
+                words[i - 2] = tmp;
+              }
+              count = 0;
             }
-            if (count == 3) {
-              tmp = '，' + words[i - 3];
-              words[i - 3] = words[i - 1];
-              words[i - 1] = words[i - 2];
-              words[i - 2] = tmp;
-            }
-            count = 0;
+            flag_count++;
           }
-          flag_count++;
+        }
+
+        author_name = words.join(' ')
+
+        var div_paper_title = paper_title.split(/\s+/);
+        for (let i = 0; i < div_paper_title.length; ++i) {
+          if (String(div_paper_title[i]) !== 'A' && String(div_paper_title[i]) !== 'a' && String(div_paper_title[i]) !== 'An' && String(div_paper_title[i]) !== 'an') {
+            div_paper_title[i] = ((String(div_paper_title[i])).replace(/[^0-9a-zA-Z]/gi, "")).toLowerCase() + '，';
+            var document_reference_name = (String(words[0])).toLowerCase() + String(yearofpublic) + div_paper_title[i];
+            break;
+          }
+        }
+
+        //論文名で先頭の文字だけを大文字にする
+        paper_title = paper_title.charAt(0).toUpperCase() + paper_title.slice(1).toLowerCase();        
+
+        if (!paper_title || !author_name || !journal_title || !yearofpublic){
+          alert('必須項目が入力されていません．')
+        }
+        else{
+          var BibWindow = window.open("", "Bibwindow", "width=500,height=500");
+          BibWindow.document.open();
+          BibWindow.document.clear();
+          if (volume && pages && publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && !pages && publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && pages && !publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && pages && publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n"  + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && !pages && !publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" +  "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && pages && !publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && !pages && publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (volume && !pages && !publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "}<br>\n" + "}</p>");
+          }
+          if (!volume && pages && publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (!volume && !pages && publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (!volume && pages && !publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p></body></html>");
+          }
+          if (!volume && pages && publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (!volume && !pages && !publisher && number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "number={" + number + "}<br>\n" + "}</p></body></html>");
+          }
+          if (!volume && !pages && publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p></body></html>");
+          }
+          if (!volume && pages && !publisher && !number) {
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "}<br>\n" + "}</p></body></html>");
+          }
+          else{
+            BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "}<br>\n" + "}</p></body></html>");
+          }
+          BibWindow.document.close();
         }
       }
-
-      author_name = words.join(' ')
-      BibWindow = window.open("", "myWindow", "width=500,height=500");
-      var div_paper_title = paper_title.split(/\s+/);
-
-      for (let i = 0; i < div_paper_title.length; ++i) {
-        if (String(div_paper_title[i]) !== 'A' && String(div_paper_title[i]) !== 'a' && String(div_paper_title[i]) !== 'An' && String(div_paper_title[i]) !== 'an') {
-          div_paper_title[i] = ((String(div_paper_title[i])).replace(/[^0-9a-zA-Z]/gi, "")).toLowerCase() + '，';
-          var document_reference_name = (String(words[0])).toLowerCase() + String(yearofpublic) + div_paper_title[i];
-          break;
-        }
-      }
-
-      var paper_title_lowercase = paper_title.split(/\s+/);
-      for (let i = 1; i < paper_title_lowercase.length; ++i) {
-        paper_title_lowercase[i] = paper_title_lowercase[i].toLowerCase();
-      }
-
-      paper_title_lowercase = paper_title_lowercase.join(' ');
-
-      if (volume && pages && publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p>");
-      }
-      if (volume && pages && !publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p>");
-      }
-      if (volume && !pages && publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p>");
-      }
-      if (volume && !pages && !publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "volume={" + volume + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p>");
-      }
-      if (!volume && pages && publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p>");
-      }
-      if (!volume && pages && !publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p>");
-      }
-      if (!volume && !pages && publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "publisher={" + publisher + "}<br>\n" + "}</p>");
-      }
-      if (!volume && !pages && !publisher) {
-        BibWindow.document.write("<p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title_lowercase + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "year={" + yearofpublic + "}<br>\n" + "}</p>");
-      }
-    }
 
     // modal
     window.onload = function() {
