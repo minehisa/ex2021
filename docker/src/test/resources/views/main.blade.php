@@ -42,22 +42,24 @@
           <button id="icon-user" class="icon-user" style="background:hsl({{$colorBackground}},80%,75%); color:{{$colorChar}};">
             {{substr($email,0,1)}}
           </button>
-            <div class="dropdown-body">
-              <ul class="dropdown-list">
-                <li class="dropdown-username"><a>{{mb_strstr($email,'@',true)}}@******</a></li>
-                <li><hr style="border-top: 10px double #000;"/></li>
-                <li class="dropdown-item"><a>なにか</a></li>
-                <li class="dropdown-item"><a>めにゅーを</a></li>
-                <li class="dropdown-item">
-                  <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('ログアウト') }}
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-              @csrf
-            </form> 
+          <div class="dropdown-body">
+            <ul class="dropdown-list">
+              <li class="dropdown-username"><a>{{mb_strstr($email,'@',true)}}@******</a></li>
+              <li>
+                <hr style="border-top: 10px double #000;" />
+              </li>
+              <li class="dropdown-item"><a>なにか</a></li>
+              <li class="dropdown-item"><a href="{{ route('password.confirm')}}">パスワード変更</a></li>
+              <li class="dropdown-item">
+                <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  {{ __('ログアウト') }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
         </div>
       </div>
     </div>
@@ -79,7 +81,7 @@
       <vue-bootstrap4-table></vue-bootstrap4-table>
       <!-- <vue-bootstrap4-table /> -->
     </div>
-</div>
+  </div>
 
   <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 
