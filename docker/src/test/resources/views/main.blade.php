@@ -48,7 +48,6 @@
               <li>
                 <hr style="border-top: 10px double #000;" />
               </li>
-              <li class="dropdown-item"><a>なにか</a></li>
               <li class="dropdown-item"><a href="{{ route('password.confirm')}}">パスワード変更</a></li>
               <li class="dropdown-item">
                 <a class="btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

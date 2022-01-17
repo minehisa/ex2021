@@ -41,7 +41,6 @@
         <li>
           <hr style="border-top: 10px double #000;" />
         </li>
-        <li class="dropdown-item"><a>めにゅーを</a></li>
         <li class="dropdown-item"><a href="{{ route('password.confirm')}}">パスワード変更</a></li>
         <li class="dropdown-item">
           <a class="btn-logout-usermanu" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -54,8 +53,6 @@
       @csrf
     </form>
   </div>
-
-  <p class='text-center bg-info' id="mess"></p>
 
   <!-- モーダル・ダイアログ -->
   <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

@@ -10,7 +10,8 @@
     height: 50px;
     position: fixed;
     z-index: 3;
-    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: #f8fafc;
 }
 .detail{
@@ -349,7 +350,7 @@ span.icon-user:hover + p.name-user {
 .detail-label{
     text-align: center;
     margin: 0 auto;
-    background: #9ec34b;
+    background: #d3d3d3;
     color: #000000;
     display: block;
     margin-bottom: 1px;
@@ -360,12 +361,12 @@ span.icon-user:hover + p.name-user {
     cursor: pointer;
 }
 .detail-label:hover{
-    background-color: #008000;
+    background-color: #5c5c5c;
     color: #ffffff;
     transition: .2s;
 }
 .detail-label:after{
-    background: #008000;
+    background: #5c5c5c;
     box-sizing: border-box;
     content: "+";
     display: block;
