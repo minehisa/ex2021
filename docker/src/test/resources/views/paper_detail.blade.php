@@ -279,7 +279,8 @@
         }
         if (!volume && pages && !publisher && !number) {
           BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "pages={" + pages + "}<br>\n" + "}</p></body></html>");
-        } else {
+        } 
+        if (!volume && !pages && !publisher && !number) {
           BibWindow.document.write("<html><head><title>BibTeX形式</title></head><body><p>@article{" + document_reference_name + "<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "title={" + paper_title + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "author={" + author_name + "},<br>\n" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "journal={" + journal_title + "}<br>\n" + "}</p></body></html>");
         }
         BibWindow.document.close();
