@@ -22,19 +22,14 @@ Route::get('/', function () {
 
 Route::view('/', 'Top');
 
-
-/* vendor/laravel/ui/src/AuthRouteMethods.php参照 */
-/* 認証 */
 Auth::routes();
+/* vendor/laravel/ui/src/AuthRouteMethods.php参照 */
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 // Route::post('login', 'Auth\LoginController@login');
 // Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 // Route::post('register', 'Auth\RegisterController@register');
-
 // Route::get('password/confirm', 'Auth\ConfirmPasswordController@confirm')->name('password.confirm');
-
 // Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 // Route::get('password/passward_reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 // Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
@@ -51,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/paper_add', 'MainController@upload_paper')->name('paper_add');
   // 論文詳細
   Route::get('/paper_detail/{paperid}', 'MainController@detail')->name('paper_detail');
+  // パスワード変更
+  Route::get('/password/change', 'Auth\ChangePasswordController@showChangePasswordForm')->name('password.form');
+  Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')->name('password.change');
 });
 
 
@@ -58,4 +56,3 @@ Route::get('/paper_detail', 'MainController@detail')->name('paper_detail');
 
 
 Route::get('/Top', 'HomeController@index')->name('Top');
-// Route::get('/home', 'HomeController@index')->name('home');

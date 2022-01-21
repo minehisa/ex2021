@@ -38,8 +38,8 @@
         </div>
         <div class="input-group">
           <span class="input-group-addon">
-              <i class="fas fa-envelope-square"></i>
-            </span>
+            <i class="fas fa-envelope-square"></i>  
+          </span>
           <input id="email" type="email" size=50 class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail Address">
         </div>
       </div>
@@ -55,7 +55,7 @@
         <div class="input-group">
           <span class="input-group-addon">
               <i class="fas fa-lock"></i>
-            </span>
+          </span>
           <input id="password" type="password" size=50 class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
         </div>
       </div>
@@ -63,6 +63,9 @@
         <label for="password-confirm" class="mes_pos col-form-label">{{ __('パスワード(確認用)') }}</label>
 
         <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fas fa-check-double"></i>
+          </span>
           <input id="password-confirm" type="password" size=50 class="form-control" name="password_confirmation" required autocomplete="new-password"  placeholder="Confirmation">
         </div>
       </div>
@@ -71,23 +74,6 @@
           {{ __('登録') }}
         </button>
       </div>
-
-
-      <!-- <div class="center">
-      メールアドレス：
-      <input type="text" id="msg" size="50" name="address">
-      <p class="mb3"></p>
-      パスワード：
-      <input type="text" id="msg" size="50" name="pass">
-    </div>
-
-    <p class="mb10"></p>
-    <f>
-      <div class="center">
-        <a href="#" class="btn-open" type="submit">登録</a>
-        <input type="submit" value="登録" class="btn-open">
-        <a onclick="location.href='./../Top.html'; return false;" type="sumit" class="btn-open">登録</a>
-      </div> -->
 
     </form>
   </div>

@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="ja">
   <link rel="stylesheet" href="{{ asset('/css/paper_add.css') }}">
   <!-- <link rel="stylesheet" href="{{ asset('/css/Bibtex.css') }}"> -->
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -176,8 +177,7 @@
         <li>
           <hr style="border-top: 10px double #000;" />
         </li>
-        <li class="dropdown-item"><a>めにゅーを</a></li>
-        <li class="dropdown-item"><a>なにか</a></li>
+        <li class="dropdown-item"><a href="{{ route('password.form')}}">パスワード変更</a></li>
         <li class="dropdown-item">
           <a class="btn-logout-usermanu" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             {{ __('ログアウト') }}
