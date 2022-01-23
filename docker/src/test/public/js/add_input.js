@@ -15,11 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const l_pages_focus = document.getElementById('l_pages');
     const publisher_focus = document.getElementById('publisher');
     const l_publisher_focus = document.getElementById('l_publisher');
+
+    focus_text_color = '#009900'
+    /*focus_shadow_color = "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"*/
+    blur_text_color = '#000000'
+
     title_focus.addEventListener('focus',() => {
         /*l_title_focus.style.color='red';*/
         l_title_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -27,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     title_focus.addEventListener('blur',() => {
         l_title_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -36,8 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     author_focus.addEventListener('focus',() => {
         l_author_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -45,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     author_focus.addEventListener('blur',() => {
         l_author_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -54,8 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     journal_focus.addEventListener('focus',() => {
         l_journal_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     journal_focus.addEventListener('blur',() => {
         l_journal_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -72,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     year_focus.addEventListener('focus',() => {
         l_year_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     year_focus.addEventListener('blur',() => {
         l_year_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -90,8 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     volume_focus.addEventListener('focus',() => {
         l_volume_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     volume_focus.addEventListener('blur',() => {
         l_volume_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -108,8 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     number_focus.addEventListener('focus',() => {
         l_number_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     number_focus.addEventListener('blur',() => {
         l_number_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -126,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     pages_focus.addEventListener('focus',() => {
         l_pages_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -135,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     pages_focus.addEventListener('blur',() => {
         l_pages_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
@@ -144,8 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     publisher_focus.addEventListener('focus',() => {
         l_publisher_focus.animate({
-            color: '#ffffff',
-            textShadow: "2px 2px 2px #006400,-2px 2px 2px #006400,2px -2px 2px #006400,-2px -2px 2px #006400"
+            color: focus_text_color,
         }, {
             duration: 200,
             fill: "forwards"
@@ -153,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     publisher_focus.addEventListener('blur',() => {
         l_publisher_focus.animate({
-            color: 'black',
+            color: blur_text_color,
             textShadow: "none"
         }, {
             duration: 200,
