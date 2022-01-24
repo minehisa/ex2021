@@ -176,8 +176,6 @@
         <li>
           <hr style="border-top: 10px double #000;" />
         </li>
-        <li class="dropdown-item"><a>めにゅーを</a></li>
-        <li class="dropdown-item"><a>なにか</a></li>
         <li class="dropdown-item">
           <a class="btn-logout-usermanu" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             {{ __('ログアウト') }}
