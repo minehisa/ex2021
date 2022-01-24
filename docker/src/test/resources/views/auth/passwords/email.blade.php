@@ -19,7 +19,7 @@
           <h1 class="page-title">パスワードを再登録</h1>
         </div>
         <div class="col-3 text-center text-lg-start">
-          <button type="button" class="btn-back" onClick="history.back()">戻る</button>
+          <button type="button" class="btn-back" onClick="location.href='{{ url('/login') }}'">戻る</button>
         </div>
       </div>
     </div>
