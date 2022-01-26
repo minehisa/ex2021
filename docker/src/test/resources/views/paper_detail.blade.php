@@ -159,14 +159,24 @@
   </div>
   <script>
     document.getElementById("Bib").onclick = function() {
-      var paper_title = '{{$data->papername}}';
-      var author_name = '{{$data->author}}';
-      var journal_title = '{{$data->journal}}';
-      var publisher = '{{$data->publisher}}';
-      var yearofpublic = '{{$data->yearofpublic}}';
-      var pages = '{{$data->pages}}';
-      var volume = '{{$data->volume}}';
-      var number = '{{$data->number}}';
+      // var paper_title = '{{$data->papername}}';
+      // var author_name = '{{$data->author}}';
+      // var journal_title = '{{$data->journal}}';
+      // var publisher = '{{$data->publisher}}';
+      // var yearofpublic = '{{$data->yearofpublic}}';
+      // var pages = '{{$data->pages}}';
+      // var volume = '{{$data->volume}}';
+      // var number = '{{$data->number}}';
+
+      
+      let paper_title = $('#td-papername').text();
+      let author_name = $('#td-author').text();
+      let journal_title = $('#td-journal').text();
+      let yearofpublic = $('#td-year').text();
+      let volume = $('#td-volume').text();
+      let number = $('#td-number').text();
+      let pages = $('#td-pages').text();
+      let publisher = $('#td-publisher').text();
 
       author_name = author_name.replace(/(\，|\,)/g, " " + "and" + " ");
       var words = [];
@@ -290,14 +300,7 @@
     // modal
     window.onload = function() {
       $('#modal1').on('show.bs.modal', function(event) {
-        // let paper_title = '{{$data->papername}}';
-        // let author_name = '{{$data->author}}';
-        // let journal_title = '{{$data->journal}}';
-        // let yearofpublic = '{{$data->yearofpublic}}';
-        // let volume = '{{$data->volume}}';
-        // let number = '{{$data->number}}';
-        // let pages = '{{$data->pages}}';
-        // let publisher = '{{$data->publisher}}';
+
         let paper_title = $('#td-papername').text();
         let author_name = $('#td-author').text();
         let journal_title = $('#td-journal').text();

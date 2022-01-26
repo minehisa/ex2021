@@ -178,7 +178,7 @@ export default {
         pagination_info: true, // default true
         num_of_visibile_pagination_buttons: 5, // default 5
         per_page: 5, // default 10
-        per_page_options: [5, 10, 25, 50, 100],
+        per_page_options: [5, 10, 25,50,100],
         preservePageOnDataChange: false, // default false <- 検索したときにいたページを維持するか/しないか
         checkbox_rows: true,
         card_mode: false,

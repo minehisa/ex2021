@@ -260,7 +260,7 @@
           {{ $errors->first('pages') }}<br>
           @endif
         </div>
-        <input type="text" name="pages" id="pages" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="(例) 14      ※半角数字のみ">
+        <input type="text" name="pages" id="pages" size="50" class="add_paper_info" form="my-awesome-dropzone" placeholder="(例) 14-15      ※半角数字,'-'のみ">
         <div class="text_underline"></div>
       </div><br>
       <div>

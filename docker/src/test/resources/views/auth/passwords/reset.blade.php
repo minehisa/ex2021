@@ -43,7 +43,7 @@
           <span class="input-group-addon">
             <i class="fas fa-envelope-square"></i>
           </span>
-          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" placeholder="E-mail Address" required autocomplete="email" autofocus>
+          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" placeholder="E-mail Address" required autocomplete="email" autofocus readonly>
           @error('email')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

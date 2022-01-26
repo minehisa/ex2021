@@ -28,7 +28,7 @@ class PaperController extends Controller
     if (!$request->ajax()) {
       abort(404);
     }
-    return response()->json(Auth::user()->paperbasic()->join('paperdetails', 'paperbasic.paperid', '=', 'paperdetails.paperid')->select('paperbasic.paperid', 'papername', 'author', 'journal', 'yearofpublic', 'updatetime', 'regittime')->paginate());
+    return response()->json(Auth::user()->paperbasic()->join('paperdetails', 'paperbasic.paperid', '=', 'paperdetails.paperid')->select('paperbasic.paperid', 'papername', 'author', 'journal', 'yearofpublic', 'updatetime', 'regittime')->paginate(100));
   }
 
   public function delete(Request $request)
